@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
+import 'package:submission02/data/const/constants.dart';
 import 'package:submission02/ui/detail/detail_screen.dart';
 import 'package:submission02/ui/list/future_builder_list_screen.dart';
 import 'package:submission02/ui/search/search_controller.dart';
+import 'package:submission02/utils/resource_helper/assets.dart';
 
 import '../../utils/resource_helper/sizes.dart';
 
@@ -33,7 +36,7 @@ class SearchRestaurantScreen extends GetView<SearchRestaurantController> {
                   children: [
                     Center(
                       child: Text(
-                        'Search',
+                        Constants.searchTitle,
                         style: TextStyle(
                             color: Colors.deepOrange,
                             fontSize: displayWidth(context) * 0.08,
@@ -42,7 +45,7 @@ class SearchRestaurantScreen extends GetView<SearchRestaurantController> {
                     ),
                     Center(
                       child: Text(
-                        'Find a restaurant that you like',
+                        Constants.searchRestaurantYourLikes,
                         style: TextStyle(
                             color: Colors.deepOrange,
                             fontSize: displayWidth(context) * 0.05,
@@ -60,8 +63,8 @@ class SearchRestaurantScreen extends GetView<SearchRestaurantController> {
                             Icons.search,
                             color: Colors.deepOrange,
                           ),
-                          labelText: 'Input Name Restaurant',
-                          hintText: 'Cari Restaurant'),
+                          labelText: Constants.inputData,
+                          hintText: Constants.search),
                     ),
                     Expanded(
                       flex: 2,
@@ -75,28 +78,31 @@ class SearchRestaurantScreen extends GetView<SearchRestaurantController> {
                                     builder: (context, snapshot) {
                                       if (snapshot.hasData) {
                                         return ListView.builder(
-                                          itemCount:
-                                              cSearch.listBodyRestaurants.length,
+                                          itemCount: cSearch
+                                              .listBodyRestaurants.length,
                                           itemBuilder: (context, index) {
                                             var data = cSearch
                                                 .listBodyRestaurants[index];
                                             return InkWell(
                                               onTap: () {
                                                 detailController.idRestaurant =
-                                                    data['id'];
+                                                    data[Constants.id];
                                                 detailController
                                                     .getListRestaurant();
                                                 Get.to(
                                                   () => DetailRestaurantScreen(
-                                                    restaurantID: data['id'],
-                                                    restaurantNAME: data['name'],
-                                                    restaurantCITY: data['city'],
+                                                    restaurantID: data[Constants.id],
+                                                    restaurantNAME:
+                                                        data[Constants.name],
+                                                    restaurantCITY:
+                                                        data[Constants.city],
                                                     restaurantDESCRIPTION:
-                                                        data['description'],
+                                                        data[Constants.description],
                                                     restaurantPICTUREID:
-                                                        data['pictureId'],
+                                                        data[Constants.image],
                                                     restaurantRATING:
-                                                        data['rating'].toString(),
+                                                        data[Constants.rating]
+                                                            .toString(),
                                                     restaurantFood:
                                                         listRestaurants.foods,
                                                     restaurantDrink:
@@ -121,15 +127,16 @@ class SearchRestaurantScreen extends GetView<SearchRestaurantController> {
                                                               16, 12, 8, 12),
                                                       child: ClipRRect(
                                                         borderRadius:
-                                                            BorderRadius.circular(
-                                                                10),
+                                                            BorderRadius
+                                                                .circular(10),
                                                         child: Image.network(
                                                             'https://restaurant-api.dicoding.dev/images/medium/${data['pictureId']}',
                                                             fit: BoxFit.cover,
-                                                            width: MediaQuery.of(
-                                                                    context)
-                                                                .size
-                                                                .width,
+                                                            width:
+                                                                MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width,
                                                             height: 80),
                                                       ),
                                                     )),
@@ -143,7 +150,7 @@ class SearchRestaurantScreen extends GetView<SearchRestaurantController> {
                                                                   .start,
                                                           children: [
                                                             Text(
-                                                              data['name'],
+                                                              data[Constants.name],
                                                               style: TextStyle(
                                                                   color: Colors
                                                                       .deepOrange,
@@ -155,7 +162,7 @@ class SearchRestaurantScreen extends GetView<SearchRestaurantController> {
                                                                       FontWeight
                                                                           .bold,
                                                                   fontFamily:
-                                                                      'Helvetica'),
+                                                                  Constants.helvetica),
                                                             ),
                                                             const SizedBox(
                                                                 height: 5),
@@ -168,7 +175,7 @@ class SearchRestaurantScreen extends GetView<SearchRestaurantController> {
                                                                         .grey,
                                                                     size: 16),
                                                                 Text(
-                                                                  data['city'],
+                                                                  data[Constants.city],
                                                                   style: TextStyle(
                                                                       fontSize:
                                                                           displayWidth(context) *
@@ -182,16 +189,17 @@ class SearchRestaurantScreen extends GetView<SearchRestaurantController> {
                                                                 height: 10),
                                                             Row(
                                                               children: [
-                                                                RatingBar.builder(
+                                                                RatingBar
+                                                                    .builder(
                                                                   ignoreGestures:
                                                                       true,
                                                                   itemSize:
                                                                       displayWidth(
                                                                               context) *
                                                                           0.05,
-                                                                  initialRating: data[
-                                                                          'rating']
-                                                                      .toDouble(),
+                                                                  initialRating:
+                                                                      data[Constants.rating]
+                                                                          .toDouble(),
                                                                   glowColor: Colors
                                                                       .transparent,
                                                                   minRating: 1,
@@ -220,7 +228,7 @@ class SearchRestaurantScreen extends GetView<SearchRestaurantController> {
                                                                 Row(
                                                                   children: [
                                                                     Text(
-                                                                      data['rating']
+                                                                      data[Constants.rating]
                                                                           .toString(),
                                                                       style: TextStyle(
                                                                           color: Colors
@@ -252,15 +260,21 @@ class SearchRestaurantScreen extends GetView<SearchRestaurantController> {
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.center,
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: const [
-                                        Icon(Icons.home, size: 100),
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Lottie.asset(JsonAssets.search),
                                         SizedBox(height: 20),
-                                        Text(
-                                            'Anda bisa manfaatkan fitur searching '),
-                                        SizedBox(height: 7),
-                                        Text(
-                                            'untuk mencari restaurant yg anda mau'),
+                                        Center(
+                                          child: Text(
+                                            Constants.noDataYet,
+                                            style: TextStyle(
+                                              color: Colors.deepOrange,
+                                              fontSize:
+                                                  displayWidth(context) * 0.05,
+                                            ),
+                                          ),
+                                        ),
                                       ],
                                     ),
                                   ),

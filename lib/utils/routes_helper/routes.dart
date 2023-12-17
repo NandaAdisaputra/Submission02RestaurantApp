@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:submission02/ui/home/home_screen.dart';
 import 'package:submission02/ui/list/list_restaurant_screen.dart';
-import 'package:submission02/ui/screen/splash_screen.dart';
 import 'package:submission02/ui/search/search_screen.dart';
+import 'package:submission02/ui/splash/splash_screen.dart';
 import 'package:submission02/utils/resource_helper/strings.dart';
 
 

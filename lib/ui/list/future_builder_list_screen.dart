@@ -1,10 +1,12 @@
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:submission02/data/const/constants.dart';
 import 'package:submission02/ui/detail/detail_controller.dart';
 import 'package:submission02/ui/detail/detail_screen.dart';
 import 'package:submission02/ui/list/list_restaurant_controller.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:submission02/utils/resource_helper/fonts.dart';
 import 'package:submission02/utils/resource_helper/sizes.dart';
 
 var listRestaurants = Get.put(ListRestaurantController());
@@ -41,16 +43,16 @@ class FutureBuilderRestaurant extends GetView<ListRestaurantController> {
               if (snapshot.hasData) {
                 return InkWell(
                   onTap: () {
-                    detailController.idRestaurant = data['id'];
+                    detailController.idRestaurant = data[Constants.id];
                     detailController.getListRestaurant();
                     Get.to(
                       () => DetailRestaurantScreen(
-                        restaurantID: data['id'],
-                        restaurantNAME: data['name'],
-                        restaurantCITY: data['city'],
-                        restaurantDESCRIPTION: data['description'],
-                        restaurantPICTUREID: data['pictureId'],
-                        restaurantRATING: data['rating'].toString(),
+                        restaurantID: data[Constants.id],
+                        restaurantNAME: data[Constants.name],
+                        restaurantCITY: data[Constants.city],
+                        restaurantDESCRIPTION: data[Constants.description],
+                        restaurantPICTUREID: data[Constants.image],
+                        restaurantRATING: data[Constants.rating].toString(),
                         restaurantFood: listFoods,
                         restaurantDrink: listDrinks,
                       ),
@@ -68,7 +70,7 @@ class FutureBuilderRestaurant extends GetView<ListRestaurantController> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(10),
                               child: Image.network(
-                                  'https://restaurant-api.dicoding.dev/images/medium/${data['pictureId']}',
+                                  'https://restaurant-api.dicoding.dev/images/medium/${data[Constants.image]}',
                                   fit: BoxFit.cover,
                                   width: MediaQuery.of(context).size.width,
                                   height: 80),
@@ -85,13 +87,13 @@ class FutureBuilderRestaurant extends GetView<ListRestaurantController> {
                                 Row(
                                   children: [
                                     Text(
-                                      data['name'],
+                                      data[Constants.name],
                                       style: TextStyle(
                                           color: Colors.deepOrange,
                                           fontSize:
-                                              displayWidth(context) * 0.05,
+                                              displayWidth(context) * FontSize.s005,
                                           fontWeight: FontWeight.bold,
-                                          fontFamily: 'Helvetica'),
+                                          fontFamily: Constants.helvetica),
                                     ),
                                   ],
                                 ),
@@ -103,10 +105,10 @@ class FutureBuilderRestaurant extends GetView<ListRestaurantController> {
                                     ),
                                     SizedBox(width: 8),
                                     Text(
-                                      data['city'],
+                                      data[Constants.city],
                                       style: TextStyle(
                                           fontSize:
-                                              displayWidth(context) * 0.04,
+                                              displayWidth(context) * FontSize.s0045,
                                           color: Colors.orange),
                                     ),
                                   ],
@@ -116,8 +118,8 @@ class FutureBuilderRestaurant extends GetView<ListRestaurantController> {
                                   children: [
                                     RatingBar.builder(
                                       ignoreGestures: true,
-                                      itemSize: displayWidth(context) * 0.05,
-                                      initialRating: data['rating'].toDouble(),
+                                      itemSize: displayWidth(context) * FontSize.s005,
+                                      initialRating: data[Constants.rating].toDouble(),
                                       glowColor: Colors.transparent,
                                       minRating: 1,
                                       direction: Axis.horizontal,
@@ -135,7 +137,7 @@ class FutureBuilderRestaurant extends GetView<ListRestaurantController> {
                                     Row(
                                       children: [
                                         Text(
-                                          data['rating'].toString(),
+                                          data[Constants.rating].toString(),
                                           style: TextStyle(
                                               color: Colors.blue,
                                               fontWeight: FontWeight.bold),

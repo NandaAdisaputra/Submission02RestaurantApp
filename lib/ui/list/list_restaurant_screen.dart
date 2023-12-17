@@ -5,6 +5,7 @@ import 'package:submission02/ui/list/future_builder_list_screen.dart';
 import 'package:submission02/ui/list/list_restaurant_controller.dart';
 import 'package:submission02/ui/search/search_screen.dart';
 import 'package:submission02/utils/resource_helper/assets.dart';
+import 'package:submission02/utils/resource_helper/fonts.dart';
 import 'package:submission02/utils/resource_helper/sizes.dart';
 
 class ListRestaurantScreen extends GetView<ListRestaurantController> {
@@ -22,7 +23,7 @@ class ListRestaurantScreen extends GetView<ListRestaurantController> {
 
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 10.0),
+            padding: const EdgeInsets.only(right: 10),
             child: Tooltip(
               message: Constants.search,
               child: Material(
@@ -54,7 +55,7 @@ class ListRestaurantScreen extends GetView<ListRestaurantController> {
                   Constants.title,
                   style: TextStyle(
                       color: Colors.deepOrange,
-                      fontSize: displayWidth(context) * 0.08,
+                      fontSize: displayWidth(context) * FontSize.s008,
                       fontWeight: FontWeight.bold),
                 ),
               ),
@@ -68,7 +69,7 @@ class ListRestaurantScreen extends GetView<ListRestaurantController> {
                 Constants.subTitle,
                 style: TextStyle(
                     color: Colors.deepOrange,
-                    fontSize: displayWidth(context) * 0.04,
+                    fontSize: displayWidth(context) * FontSize.s0045,
                     fontWeight: FontWeight.bold),
               ),
             ),

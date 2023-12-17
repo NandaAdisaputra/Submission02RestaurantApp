@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:submission02/ui/home/home_screen.dart';
+import 'package:submission02/utils/resource_helper/assets.dart';
+import 'package:submission02/utils/resource_helper/fonts.dart';
 import 'package:submission02/utils/resource_helper/sizes.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -27,11 +29,10 @@ class _SplashScreenState extends State<SplashScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Lottie.asset(
-          'assets/animations/lottie_restaurant.json',
+        child: Lottie.asset(JsonAssets.splash,
           controller: _controller,
-          width: displayWidth(context) * 0.5,
-          height: displayHeight(context) * 0.5,
+          width: displayWidth(context) * FontSize.s05,
+          height: displayHeight(context) * FontSize.s05,
           animate: true,
           onLoaded: (composition) {
             _controller

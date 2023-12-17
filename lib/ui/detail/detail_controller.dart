@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:submission02/data/base/endpoints.dart' as Endpoints;
+import 'package:submission02/data/const/constants.dart';
 import 'package:submission02/utils/error_helper/error_handler.dart';
 
 class DetailRestaurantController extends GetxController {
@@ -19,11 +20,11 @@ class DetailRestaurantController extends GetxController {
         .timeout((const Duration(seconds: 5)));
     var responseJson = json.decode(response.body);
     listBodyRestaurants = responseJson;
-    print(responseJson['restaurant']['menus']['foods']);
+    print(responseJson[Constants.restaurants][Constants.menus][Constants.foods]);
     listBodyRestaurantsMenusFoods =
-    responseJson['restaurant']['menus']['foods'];
+    responseJson[Constants.restaurants][Constants.menus][Constants.foods];
     listBodyRestaurantsMenusDrinks =
-    responseJson['restaurant']['menus']['drinks'];
+    responseJson[Constants.restaurants][Constants.menus][Constants.drinks];
 
     try {
       if (response.statusCode == 200) {

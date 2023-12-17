@@ -5,8 +5,8 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import 'package:get/get.dart';
 import 'package:submission02/ui/detail/detail_controller.dart';
+import 'package:submission02/utils/resource_helper/fonts.dart';
 import 'package:submission02/utils/resource_helper/sizes.dart';
-
 
 class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
   const DetailRestaurantScreen({
@@ -41,7 +41,7 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
               Container(
                 child: ClipRRect(
                   borderRadius:
-                  const BorderRadius.vertical(bottom: Radius.circular(15)),
+                      const BorderRadius.vertical(bottom: Radius.circular(15)),
                   child: Image.network(
                     'https://restaurant-api.dicoding.dev/images/medium/$restaurantPICTUREID',
                     fit: BoxFit.cover,
@@ -58,7 +58,7 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                         '$restaurantNAME',
                         style: TextStyle(
                             color: Colors.deepOrange,
-                            fontSize: displayWidth(context) * 0.08,
+                            fontSize: displayWidth(context) * FontSize.s008,
                             fontWeight: FontWeight.bold,
                             fontFamily: 'Helvetica'),
                       ),
@@ -77,21 +77,23 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                                   color: Colors.orange,
                                 ),
                               ),
-                              SizedBox(width: displayWidth(context) * 0.005),
+                              SizedBox(width: displayWidth(context) * FontSize.s0008),
                               Center(
                                 child: Text(
                                   '$restaurantCITY',
                                   style: TextStyle(
-                                      fontSize: displayWidth(context) * 0.03,
+                                      fontSize: displayWidth(context) * FontSize.s005,
                                       color: Colors.orange),
                                 ),
                               ),
                             ],
                           ),
-                          const SizedBox(width: 10),
+                          Container(
+                              height: 30,
+                              child: VerticalDivider(color: Colors.red)),
                           RatingBar.builder(
                             ignoreGestures: true,
-                            itemSize: displayWidth(context) * 0.045,
+                            itemSize: displayWidth(context) * FontSize.s0045,
                             initialRating: double.parse("$restaurantRATING"),
                             glowColor: Colors.transparent,
                             minRating: 1,
@@ -105,7 +107,7 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                             ),
                             onRatingUpdate: (rating) {},
                           ),
-                          SizedBox(width: displayWidth(context) * 0.085),
+                          SizedBox(width: displayWidth(context) * FontSize.s0085),
                           Row(
                             children: [
                               Text(
@@ -113,7 +115,7 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                                 style: TextStyle(
                                     color: Colors.blue,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: displayWidth(context) * 0.05),
+                                    fontSize: displayWidth(context) * FontSize.s005),
                               ),
                             ],
                           ),
@@ -126,76 +128,84 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                       thickness: 5,
                     ),
                     Padding(padding: EdgeInsets.all(3)),
-                    Text(
-                      'Deskripsi',
-                      maxLines: 4,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                          color: Colors.deepOrange,
-                          fontSize: displayWidth(context) * 0.05,
-                          fontWeight: FontWeight.bold),
+                    Center(
+                      child: Text(
+                        '$restaurantDESCRIPTION'.toString(),
+                        textAlign: TextAlign.justify,
+                        maxLines: 4,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            color: Colors.deepOrange,
+                            fontSize: displayWidth(context) * FontSize.s005,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                     const SizedBox(height: 30),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Flexible(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Menu Makanan',
-                                  style: Theme.of(context).textTheme.headline6),
-                              const SizedBox(height: 3),
-                              SizedBox(
-                                height: 200,
-                                child: ListView.builder(
-                                  scrollDirection: Axis.vertical,
-                                  itemCount: restaurantFood.length,
-                                  itemBuilder: (context, index) {
-                                    var foodName =
-                                    restaurantFood[index]['name'];
-                                    return Text(foodName,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .caption!
-                                            .copyWith(
-                                            fontSize: 13, height: 1.7));
-                                  },
+                        Expanded(
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: restaurantFood.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                var foodName =
+                                restaurantFood[index]['name'];
+                                return Card(
+                                  color: Colors.orange,
+                                  elevation: 4,
+                                  margin: EdgeInsets.all(8),
+                                  child: Column(
+                                    children: [
+                                      Center(
+                                        child: Text(
+                                          '- ' + foodName,
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: displayWidth(context) * FontSize.s005,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
+                            )),
+                        Expanded(
+                          child: ListView.builder(
+                            padding:
+                            const EdgeInsets.symmetric(horizontal: 10),
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: restaurantDrink.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              var drinkName =
+                              restaurantDrink[index]['name'];
+                              return Card(
+                                color: Colors.deepOrange,
+                                elevation: 4,
+                                margin: EdgeInsets.all(8),
+                                child: Column(
+                                  children: [
+                                    Center(
+                                      child: Text(
+                                        '- ' + drinkName,
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize:
+                                            displayWidth(context) * FontSize.s005,
+                                            fontWeight: FontWeight.normal),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Flexible(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Menu Minuman',
-                                  style: Theme.of(context).textTheme.headline6),
-                              const SizedBox(height: 3),
-                              SizedBox(
-                                height: 200,
-                                child: ListView.builder(
-                                  scrollDirection: Axis.vertical,
-                                  itemCount: restaurantDrink.length,
-                                  itemBuilder: (context, index) {
-                                    var drinkName =
-                                    restaurantDrink[index]['name'];
-
-                                    return Text(drinkName,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodySmall!
-                                            .copyWith(
-                                            fontSize: 13, height: 1.7));
-                                  },
-                                ),
-                              ),
-                            ],
+                              );
+                            },
                           ),
                         ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               )
