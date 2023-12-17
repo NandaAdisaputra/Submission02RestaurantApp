@@ -1,5 +1,5 @@
 const String IMAGE_PATH = "assets/images";
-const String JSON_PATH = "assets/animations/";
+const String JSON_PATH = "assets/animations";
 
 class ImageAssets {
   static String imageNewPlaceHolder = "$IMAGE_PATH/place_holder.jpg";

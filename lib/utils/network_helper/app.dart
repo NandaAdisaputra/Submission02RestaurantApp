@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:submission02/data/const/constants.dart';
 
 GlobalKey<NavigatorState>? navigatorKey = GlobalKey<NavigatorState>();
 
@@ -9,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Restaurant App',
+      title: Constants.title,
       debugShowCheckedModeBanner: false,
     );
   }

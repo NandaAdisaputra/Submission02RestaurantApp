@@ -1,9 +1,7 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-
 import 'package:get/get.dart';
+import 'package:submission02/data/const/constants.dart';
 import 'package:submission02/ui/detail/detail_controller.dart';
 import 'package:submission02/utils/resource_helper/fonts.dart';
 import 'package:submission02/utils/resource_helper/sizes.dart';
@@ -151,7 +149,7 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                               itemCount: restaurantFood.length,
                               itemBuilder: (BuildContext context, int index) {
                                 var foodName =
-                                restaurantFood[index]['name'];
+                                restaurantFood[index][Constants.name];
                                 return Card(
                                   color: Colors.orange,
                                   elevation: 4,
@@ -181,7 +179,7 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                             itemCount: restaurantDrink.length,
                             itemBuilder: (BuildContext context, int index) {
                               var drinkName =
-                              restaurantDrink[index]['name'];
+                              restaurantDrink[index][Constants.name];
                               return Card(
                                 color: Colors.deepOrange,
                                 elevation: 4,
