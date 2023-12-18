@@ -19,5 +19,5 @@ class JsonAssets {
 }
 class IconAssets {
   static Icon  nextIcon = const Icon(Icons.arrow_forward_ios);
-  static Icon  addIcon = const Icon(Icons.add);
+  static Icon  addIcon = const Icon(Icons.add, color: Colors.white);
 }

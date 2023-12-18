@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
+import 'package:submission02/data/const/constants.dart';
 import 'package:submission02/ui/detail/detail_controller.dart';
+import 'package:submission02/ui/review/add_field_review_screen.dart';
+import 'package:submission02/utils/resource_helper/assets.dart';
 import 'package:submission02/utils/resource_helper/fonts.dart';
 import 'package:submission02/utils/resource_helper/sizes.dart';
-import 'package:submission02/utils/resource_helper/styles.dart';
 
 class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
   const DetailRestaurantScreen({
@@ -30,36 +32,24 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
 
   @override
   Widget build(BuildContext context) {
-    var idRestaurant = '$restaurantID'.toString();
     return Scaffold(
       body: SafeArea(
         child: SizedBox(
           height: Get.height,
           child: ListView(children: [
-            Container(
-              child: ClipRRect(
-                borderRadius:
-                    const BorderRadius.vertical(bottom: Radius.circular(15)),
-                child: Image.network(
-                  'https://restaurant-api.dicoding.dev/images/medium/$restaurantPICTUREID',
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
+            _buildStack(),
             Container(
               padding: const EdgeInsets.all(17),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Center(
-                      child: Text(
-                        '$restaurantNAME',
-                        style: TextStyle(
-                            color: Colors.deepOrange,
-                            fontSize: displayWidth(context) * FontSize.s008,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Helvetica'),
-                      ),
+                    Text(
+                      '$restaurantNAME',
+                      style: TextStyle(
+                          color: Colors.deepOrange,
+                          fontSize: displayWidth(context) * FontSize.s008,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Helvetica'),
                     ),
                     const SizedBox(height: 5),
                     Container(
@@ -113,7 +103,7 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                           Row(
                             children: [
                               Text(
-                                '$restaurantRATING'.toString(),
+                                double.parse("$restaurantRATING").toString(),
                                 style: TextStyle(
                                     color: Colors.blue,
                                     fontWeight: FontWeight.bold,
@@ -127,7 +117,7 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                     ),
                     const SizedBox(height: 10),
                     Divider(
-                      color: Colors.deepOrange,
+                      color: Colors.redAccent,
                       thickness: 5,
                     ),
                     Padding(padding: EdgeInsets.all(3)),
@@ -138,105 +128,163 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                         maxLines: 4,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                            color: Colors.deepOrange,
+                            color: Colors.black,
                             fontSize: displayWidth(context) * FontSize.s005,
-                            fontWeight: FontWeight.bold),
+                            fontWeight: FontWeight.normal),
                       ),
                     ),
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: ElevatedButton(
-                            child: Text(
-                              'Tulis Review',
-                              style: TextStyles.kMediumTitle.copyWith(
-                                color: Colors.white,
+                    Container(
+                        margin: EdgeInsets.fromLTRB(16, 8, 8, 8),
+                        child: Text(Constants.menuFoods,
+                            style: TextStyle(
+                                color: Colors.deepOrange,
+                                fontSize: displayWidth(context) * FontSize.s005,
+                                fontFamily: Constants.helvetica))),
+                    SizedBox(
+                      height: 80, // Card height
+                      child: PageView.builder(
+                        itemCount:
+                            restaurantFood.isEmpty ? 0 : restaurantFood.length,
+                        controller: PageController(viewportFraction: 0.8),
+                        onPageChanged: (index) => restaurantFood.length,
+                        itemBuilder: (context, index) {
+                          var foodName = restaurantFood[index]['name'];
+                          return AnimatedPadding(
+                            duration: const Duration(milliseconds: 400),
+                            curve: Curves.fastOutSlowIn,
+                            padding: EdgeInsets.all(8),
+                            child: Card(
+                              elevation: 4,
+                              child: Center(
+                                child: Text(
+                                  foodName,
+                                  style: TextStyle(
+                                      color: Colors.orange,
+                                      fontSize: displayWidth(context) *
+                                          FontSize.s0045,
+                                      fontWeight: FontWeight.normal),
+                                ),
                               ),
                             ),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: customBlue,
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 16.0,
-                                vertical: 14.0,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                            ),
-                            onPressed: () => (
-
-                            ),
-                          ),
-                        ),
-                      ],
+                          );
+                        },
+                      ),
                     ),
-                    const SizedBox(height: 30),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Flexible(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Menu Makanan',
-                                  style: Theme.of(context).textTheme.titleLarge),
-                              const SizedBox(height: 3),
-                              SizedBox(
-                                height: 200,
-                                child: ListView.builder(
-                                  scrollDirection: Axis.vertical,
-                                  itemCount: restaurantFood.length,
-                                  itemBuilder: (context, index) {
-                                    var foodName =
-                                    restaurantFood[index]['name'];
-                                    return Text(foodName,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodySmall!
-                                            .copyWith(
-                                            fontSize: 13, height: 1.7));
-                                  },
+                    Container(
+                        margin: EdgeInsets.all(8),
+                        child: Text(Constants.menuDrinks,
+                            style: TextStyle(
+                                color: Colors.deepOrange,
+                                fontSize: displayWidth(context) * FontSize.s005,
+                                fontFamily: Constants.helvetica))),
+                    Container(
+                      margin: EdgeInsets.only(bottom: 24),
+                      child: SizedBox(
+                        height: 80, // Card height
+                        child: PageView.builder(
+                          itemCount: restaurantDrink.isEmpty
+                              ? 0
+                              : restaurantDrink.length,
+                          controller: PageController(viewportFraction: 0.8),
+                          onPageChanged: (index) => restaurantDrink.length,
+                          itemBuilder: (context, index) {
+                            var drinkName = restaurantDrink[index]['name'];
+                            return AnimatedPadding(
+                              duration: const Duration(milliseconds: 400),
+                              curve: Curves.fastOutSlowIn,
+                              padding: EdgeInsets.all(8),
+                              child: Card(
+                                elevation: 4,
+                                child: Center(
+                                  child: Text(
+                                    drinkName,
+                                    style: TextStyle(
+                                        color: Colors.orange,
+                                        fontSize: displayWidth(context) *
+                                            FontSize.s0045,
+                                        fontWeight: FontWeight.normal),
+                                  ),
                                 ),
                               ),
-                            ],
-                          ),
+                            );
+                          },
                         ),
-                        Flexible(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Menu Minuman',
-                                  style: Theme.of(context).textTheme.headline6),
-                              const SizedBox(height: 3),
-                              SizedBox(
-                                height: 200,
-                                child: ListView.builder(
-                                  scrollDirection: Axis.vertical,
-                                  itemCount: restaurantDrink.length,
-                                  itemBuilder: (context, index) {
-                                    var drinkName =
-                                    restaurantDrink[index]['name'];
-
-                                    return Text(drinkName,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodySmall!
-                                            .copyWith(
-                                            fontSize: 13, height: 1.7));
-                                  },
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    )
+                      ),
+                    ),
                   ]),
             ),
           ]),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.deepOrange,
+        onPressed: () {
+          Get.to(AddReviewFormScreen());
+        },
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            IconAssets.addIcon,
+            SizedBox(width: 8),
+            Text(Constants.addReview, style: TextStyle(color: Colors.white)),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildStack() {
+    return Stack(
+      alignment: const Alignment(0.9, 0.9),
+      children: [
+        ClipRRect(
+          borderRadius:
+              const BorderRadius.vertical(bottom: Radius.circular(15)),
+          child: Image.network(
+            'https://restaurant-api.dicoding.dev/images/medium/$restaurantPICTUREID',
+            fit: BoxFit.cover,
+          ),
+        ),
+        Container(
+          decoration: const BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Colors.orangeAccent,
+                spreadRadius: 5,
+                blurRadius: 7,
+                offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+          child: Column(
+            children: [
+              RatingBar.builder(
+                ignoreGestures: true,
+                itemSize: 30,
+                initialRating: double.parse("$restaurantRATING"),
+                glowColor: Colors.transparent,
+                minRating: 1,
+                direction: Axis.horizontal,
+                allowHalfRating: true,
+                itemCount: 5,
+                itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                itemBuilder: (_, __) => Icon(
+                  Icons.star,
+                  color: Colors.yellow,
+                ),
+                onRatingUpdate: (rating) {},
+              ),
+              Text(
+                double.parse("$restaurantRATING").toString(),
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

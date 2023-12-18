@@ -4,8 +4,6 @@ import 'package:submission02/data/const/constants.dart';
 import 'package:submission02/ui/home/home_controller.dart';
 import 'package:submission02/ui/list/list_restaurant_screen.dart';
 import 'package:submission02/ui/profile/profile_user.dart';
-import 'package:submission02/ui/review/add_field_review_screen.dart';
-import 'package:submission02/utils/resource_helper/assets.dart';
 import 'package:submission02/utils/widget/review_list_widget.dart';
 
 import '../review/review_controller.dart';
@@ -33,9 +31,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: const ListRestaurantScreen(),
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        Get.to(AddReviewFormScreen());
-      }, child: IconAssets.addIcon),
       bottomNavigationBar: BottomAppBar(
         color: Colors.orange,
         elevation: 20.0,

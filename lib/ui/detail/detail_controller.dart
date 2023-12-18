@@ -19,7 +19,6 @@ class DetailRestaurantController extends GetxController {
         .timeout((const Duration(seconds: 5)));
     var responseJson = json.decode(response.body);
     listBodyRestaurants = responseJson;
-    print(responseJson['restaurant']['menus']['foods']);
     listBodyRestaurantsMenusFoods =
     responseJson['restaurant']['menus']['foods'];
     listBodyRestaurantsMenusDrinks =

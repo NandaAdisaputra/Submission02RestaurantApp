@@ -21,6 +21,8 @@ class Constants {
   static const String profileUsers ="Profile";
   static const String visitLinkedin ="Visit My linkedin";
   static const String home ="Home";
+  static const String menuDrinks ="Menu Minuman";
+  static const String menuFoods ="Menu Makanan";
   static const String helvetica ="Helvetica";
   static const String detailProfile ="Detail My Profile";
   static const String nameProfile="Nanda Adisaputra, S.Kom";

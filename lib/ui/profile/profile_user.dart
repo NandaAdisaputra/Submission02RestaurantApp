@@ -157,8 +157,8 @@ class HomePage extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.search, color: Colors.white),
-                        Text(Constants.searchTitle, style: TextStyle(color: Colors.white)),
+                        Icon(Icons.reviews, color: Colors.white),
+                        Text(Constants.addReview, style: TextStyle(color: Colors.white)),
                       ],
                     ),
                   ),

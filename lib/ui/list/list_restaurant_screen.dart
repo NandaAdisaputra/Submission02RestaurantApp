@@ -15,13 +15,17 @@ class ListRestaurantScreen extends GetView<ListRestaurantController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(Constants.home,style: TextStyle(color: Colors.white, fontFamily: Constants.helvetica),),
+        title: Text(
+          Constants.home,
+          style:
+              TextStyle(color: Colors.white, fontFamily: Constants.helvetica),
+        ),
         backgroundColor: Colors.deepOrange,
         elevation: 0,
         leading: Padding(
-            padding: const EdgeInsets.all(12),
-            child: Image.asset(ImageAssets.imageLeading),),
-
+          padding: const EdgeInsets.all(12),
+          child: Image.asset(ImageAssets.imageLeading),
+        ),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 10),
@@ -36,7 +40,8 @@ class ListRestaurantScreen extends GetView<ListRestaurantController> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(Constants.searchTitle, style: TextStyle(color: Colors.white)),
+                      Text(Constants.searchTitle,
+                          style: TextStyle(color: Colors.white)),
                       SizedBox(width: 8),
                       Icon(
                         Icons.search,
@@ -52,19 +57,21 @@ class ListRestaurantScreen extends GetView<ListRestaurantController> {
         ],
       ),
       body: Container(
-        color: Colors.orangeAccent.shade100,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              margin: EdgeInsets.only(top: 16),
-              child: Center(
-                child: Text(
-                  Constants.title,
-                  style: TextStyle(
-                      color: Colors.deepOrange,
-                      fontSize: displayWidth(context) * FontSize.s008,
-                      fontWeight: FontWeight.bold),
+              margin: EdgeInsets.only(left: 8, right: 8, top: 8),
+              child: Container(
+                color: Colors.orangeAccent,
+                child: Center(
+                  child: Text(
+                    Constants.title,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: displayWidth(context) * FontSize.s008,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
             ),
