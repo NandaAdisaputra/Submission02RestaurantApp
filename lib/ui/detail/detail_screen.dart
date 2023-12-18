@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
-import 'package:submission02/data/const/constants.dart';
 import 'package:submission02/ui/detail/detail_controller.dart';
 import 'package:submission02/utils/resource_helper/fonts.dart';
 import 'package:submission02/utils/resource_helper/sizes.dart';
+import 'package:submission02/utils/resource_helper/styles.dart';
 
 class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
   const DetailRestaurantScreen({
@@ -30,25 +30,25 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
 
   @override
   Widget build(BuildContext context) {
+    var idRestaurant = '$restaurantID'.toString();
     return Scaffold(
       body: SafeArea(
         child: SizedBox(
           height: Get.height,
-          child: ListView(
-            children: [
-              Container(
-                child: ClipRRect(
-                  borderRadius:
-                      const BorderRadius.vertical(bottom: Radius.circular(15)),
-                  child: Image.network(
-                    'https://restaurant-api.dicoding.dev/images/medium/$restaurantPICTUREID',
-                    fit: BoxFit.cover,
-                  ),
+          child: ListView(children: [
+            Container(
+              child: ClipRRect(
+                borderRadius:
+                    const BorderRadius.vertical(bottom: Radius.circular(15)),
+                child: Image.network(
+                  'https://restaurant-api.dicoding.dev/images/medium/$restaurantPICTUREID',
+                  fit: BoxFit.cover,
                 ),
               ),
-              Container(
-                padding: const EdgeInsets.all(17),
-                child: Column(
+            ),
+            Container(
+              padding: const EdgeInsets.all(17),
+              child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Center(
@@ -75,12 +75,15 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                                   color: Colors.orange,
                                 ),
                               ),
-                              SizedBox(width: displayWidth(context) * FontSize.s0008),
+                              SizedBox(
+                                  width:
+                                      displayWidth(context) * FontSize.s0008),
                               Center(
                                 child: Text(
                                   '$restaurantCITY',
                                   style: TextStyle(
-                                      fontSize: displayWidth(context) * FontSize.s005,
+                                      fontSize:
+                                          displayWidth(context) * FontSize.s005,
                                       color: Colors.orange),
                                 ),
                               ),
@@ -105,7 +108,8 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                             ),
                             onRatingUpdate: (rating) {},
                           ),
-                          SizedBox(width: displayWidth(context) * FontSize.s0085),
+                          SizedBox(
+                              width: displayWidth(context) * FontSize.s0085),
                           Row(
                             children: [
                               Text(
@@ -113,7 +117,8 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                                 style: TextStyle(
                                     color: Colors.blue,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: displayWidth(context) * FontSize.s005),
+                                    fontSize:
+                                        displayWidth(context) * FontSize.s005),
                               ),
                             ],
                           ),
@@ -138,77 +143,98 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    const SizedBox(height: 30),
                     Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Expanded(
-                            child: ListView.builder(
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemCount: restaurantFood.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                var foodName =
-                                restaurantFood[index][Constants.name];
-                                return Card(
-                                  color: Colors.orange,
-                                  elevation: 4,
-                                  margin: EdgeInsets.all(8),
-                                  child: Column(
-                                    children: [
-                                      Center(
-                                        child: Text(
-                                          '- ' + foodName,
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: displayWidth(context) * FontSize.s005,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              },
-                            )),
-                        Expanded(
-                          child: ListView.builder(
-                            padding:
-                            const EdgeInsets.symmetric(horizontal: 10),
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: restaurantDrink.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              var drinkName =
-                              restaurantDrink[index][Constants.name];
-                              return Card(
-                                color: Colors.deepOrange,
-                                elevation: 4,
-                                margin: EdgeInsets.all(8),
-                                child: Column(
-                                  children: [
-                                    Center(
-                                      child: Text(
-                                        '- ' + drinkName,
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize:
-                                            displayWidth(context) * FontSize.s005,
-                                            fontWeight: FontWeight.normal),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            },
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ElevatedButton(
+                            child: Text(
+                              'Tulis Review',
+                              style: TextStyles.kMediumTitle.copyWith(
+                                color: Colors.white,
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: customBlue,
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 16.0,
+                                vertical: 14.0,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                            ),
+                            onPressed: () => (
+
+                            ),
                           ),
                         ),
                       ],
                     ),
-                  ],
-                ),
-              )
-            ],
-          ),
+                    const SizedBox(height: 30),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Flexible(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Menu Makanan',
+                                  style: Theme.of(context).textTheme.titleLarge),
+                              const SizedBox(height: 3),
+                              SizedBox(
+                                height: 200,
+                                child: ListView.builder(
+                                  scrollDirection: Axis.vertical,
+                                  itemCount: restaurantFood.length,
+                                  itemBuilder: (context, index) {
+                                    var foodName =
+                                    restaurantFood[index]['name'];
+                                    return Text(foodName,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodySmall!
+                                            .copyWith(
+                                            fontSize: 13, height: 1.7));
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Flexible(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Menu Minuman',
+                                  style: Theme.of(context).textTheme.headline6),
+                              const SizedBox(height: 3),
+                              SizedBox(
+                                height: 200,
+                                child: ListView.builder(
+                                  scrollDirection: Axis.vertical,
+                                  itemCount: restaurantDrink.length,
+                                  itemBuilder: (context, index) {
+                                    var drinkName =
+                                    restaurantDrink[index]['name'];
+
+                                    return Text(drinkName,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodySmall!
+                                            .copyWith(
+                                            fontSize: 13, height: 1.7));
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    )
+                  ]),
+            ),
+          ]),
         ),
       ),
     );

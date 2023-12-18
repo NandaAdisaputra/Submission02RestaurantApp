@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:submission02/data/const/constants.dart';
@@ -8,10 +7,9 @@ import 'package:submission02/ui/detail/detail_screen.dart';
 import 'package:submission02/ui/list/future_builder_list_screen.dart';
 import 'package:submission02/ui/search/search_controller.dart';
 import 'package:submission02/utils/resource_helper/assets.dart';
-
 import '../../utils/resource_helper/sizes.dart';
 
-var cSearch = Get.put(SearchRestaurantController());
+var searchRestaurant = Get.put(SearchRestaurantController());
 
 class SearchRestaurantScreen extends GetView<SearchRestaurantController> {
   const SearchRestaurantScreen({Key? key}) : super(key: key);
@@ -55,7 +53,7 @@ class SearchRestaurantScreen extends GetView<SearchRestaurantController> {
                     const SizedBox(height: 30),
                     TextField(
                       onChanged: (text) {
-                        cSearch.queryInp.value = text;
+                        searchRestaurant.queryInp.value = text;
                       },
                       decoration: InputDecoration(
                           border: OutlineInputBorder(),
@@ -72,16 +70,16 @@ class SearchRestaurantScreen extends GetView<SearchRestaurantController> {
                         height: Get.height,
                         child: Center(
                           child: Container(
-                            child: cSearch.queryInp != ''
+                            child: searchRestaurant.queryInp != ''
                                 ? FutureBuilder(
-                                    future: cSearch.getListRestaurant(),
+                                    future: searchRestaurant.getListRestaurant(),
                                     builder: (context, snapshot) {
                                       if (snapshot.hasData) {
                                         return ListView.builder(
-                                          itemCount: cSearch
+                                          itemCount: searchRestaurant
                                               .listBodyRestaurants.length,
                                           itemBuilder: (context, index) {
-                                            var data = cSearch
+                                            var data = searchRestaurant
                                                 .listBodyRestaurants[index];
                                             return InkWell(
                                               onTap: () {

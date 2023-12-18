@@ -3,7 +3,6 @@ import 'package:submission02/data/const/constants.dart';
 import 'package:submission02/ui/detail/detail_controller.dart';
 import 'package:submission02/ui/detail/detail_screen.dart';
 import 'package:submission02/ui/list/list_restaurant_controller.dart';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:submission02/utils/resource_helper/fonts.dart';

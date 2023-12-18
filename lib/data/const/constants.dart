@@ -17,7 +17,13 @@ class Constants {
   static const String inputData ="Masukkan Nama Restorant";
   static const String searchRestaurantYourLikes ="Temukan Restoran yang Anda Sukai";
   static const String searchTitle ="Search";
-
-
+  static const String addReview ="Review";
+  static const String profileUsers ="Profile";
+  static const String visitLinkedin ="Visit My linkedin";
+  static const String home ="Home";
   static const String helvetica ="Helvetica";
+  static const String detailProfile ="Detail My Profile";
+  static const String nameProfile="Nanda Adisaputra, S.Kom";
+  static const String descriptionProfile = "Saya seorang Programmer Android, yang berspesialisasi dalam aplikasi android native. Lulusan course Dicoding Academy Google Developers Authorized Training Partner. Wisudawan Terbaik program studi S1 Teknik Informatika pada wisuda ke 61 Universitas Semarang dengan memperoleh IPK 3.86 (Cumlaude) dan waktu tempuh 3.5 tahun";
+
 }

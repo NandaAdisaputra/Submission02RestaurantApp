@@ -4,6 +4,12 @@ class AppStrings {
 
   static const String success = "success";
   // error handler
+  static String addReview = 'Add Review';
+  static String reviewManagement = 'Management Review';
+  static String reviewDetail = 'Review Details';
+  static String reviewName = 'name';
+  static String reviewDesc = 'review';
+  static String reviewDate = 'date';
   static const String strBadRequestError = "bad_request_error";
   static const String strNoContent = "no_content";
   static const String strForbiddenError = "forbidden_error";

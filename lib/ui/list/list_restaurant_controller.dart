@@ -10,6 +10,7 @@ class ListRestaurantController extends GetxController {
   var listBodyRestaurants = [];
   var foods;
   var drinks;
+  var isDataLoading = false.obs;
 
   Future<dynamic> getListRestaurant() async {
     WidgetsFlutterBinding.ensureInitialized();
@@ -18,6 +19,7 @@ class ListRestaurantController extends GetxController {
     var responseJson = json.decode(response.body)[Constants.restaurants];
     listBodyRestaurants = responseJson;
     try {
+      isDataLoading(true);
       if (response.statusCode == 200) {
         return listBodyRestaurants;
       } else {
@@ -25,6 +27,8 @@ class ListRestaurantController extends GetxController {
       }
     } catch (e) {
       rethrow;
+    } finally {
+      isDataLoading(false);
     }
   }
 }

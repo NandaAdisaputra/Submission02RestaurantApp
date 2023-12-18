@@ -10,6 +10,7 @@ class SearchRestaurantController extends GetxController {
   final queryRestaurantsSearch = TextEditingController();
   var queryInp = ''.obs;
   var listBodyRestaurants;
+  var isDataLoading = false.obs;
   Future<dynamic> getListRestaurant() async {
     WidgetsFlutterBinding.ensureInitialized();
     String urlSearch = Endpoints.getSearch.search + "?q=$queryInp";
@@ -19,6 +20,7 @@ class SearchRestaurantController extends GetxController {
     var responseJson = json.decode(response.body)[Constants.restaurants];
     listBodyRestaurants = responseJson;
     try {
+      isDataLoading(true);
       if (response.statusCode == 200) {
         return listBodyRestaurants;
       } else {
@@ -26,6 +28,8 @@ class SearchRestaurantController extends GetxController {
       }
     } on Error {
       rethrow;
+    } finally {
+      isDataLoading(false);
     }
   }
 }

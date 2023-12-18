@@ -15,6 +15,7 @@ class ListRestaurantScreen extends GetView<ListRestaurantController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text(Constants.home,style: TextStyle(color: Colors.white, fontFamily: Constants.helvetica),),
         backgroundColor: Colors.deepOrange,
         elevation: 0,
         leading: Padding(
@@ -32,10 +33,17 @@ class ListRestaurantScreen extends GetView<ListRestaurantController> {
                   onTap: () => Get.to(
                     const SearchRestaurantScreen(),
                   ),
-                  child: const Icon(
-                    Icons.search,
-                    color: Colors.white,
-                    size: 30,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(Constants.searchTitle, style: TextStyle(color: Colors.white)),
+                      SizedBox(width: 8),
+                      Icon(
+                        Icons.search,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                    ],
                   ),
                 ),
               ),
