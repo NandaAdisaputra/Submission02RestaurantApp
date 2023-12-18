@@ -8,32 +8,21 @@ import 'package:submission02/ui/search/search_screen.dart';
 import 'package:submission02/utils/resource_helper/assets.dart';
 import 'package:submission02/utils/resource_helper/sizes.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../utils/resource_helper/colors.dart';
 import '../../utils/resource_helper/fonts.dart';
 
 
 var profileUsers = Get.put(ProfileUserController());
-
 class ProfileUserScreen extends GetView<ProfileUserController> {
   const ProfileUserScreen ({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-
     @override
     Widget build(BuildContext context) {
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.deepOrange,
+          backgroundColor: Get.isDarkMode
+              ? CustomColors.Jet
+              : CustomColors.DarkOrange,
           elevation: 0,
-          title: Text(Constants.profileUsers,style: TextStyle(color: Colors.white, fontFamily: Constants.helvetica),),
         leading: Padding(
           padding: const EdgeInsets.all(12),
           child: Image.asset(ImageAssets.imageLeading),),
@@ -44,7 +33,9 @@ class HomePage extends StatelessWidget {
             child: Tooltip(
               message: Constants.search,
               child: Material(
-                color: Colors.deepOrange,
+                color: Get.isDarkMode
+                    ? CustomColors.Jet
+                    : CustomColors.DarkOrange,
                 child: InkWell(
                   onTap: () => Get.to(
                     const SearchRestaurantScreen(),
@@ -70,10 +61,14 @@ class HomePage extends StatelessWidget {
                 child: Container(
                   width: double.infinity,
                   height: double.infinity,
-                  color: Colors.orange,
+                  color:Get.isDarkMode
+                      ? CustomColors.Jet
+                      : CustomColors.OrangePeel,
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.symmetric(horizontal: 8),
-                  child: Text(Constants.detailProfile, style: TextStyle(color: Colors.white, fontFamily: Constants.helvetica,fontSize:displayWidth(context) * FontSize.s005),),
+                  child: Text(Constants.detailProfile, style: TextStyle( color: Get.isDarkMode
+                      ? CustomColors.White
+                      : CustomColors.White, fontFamily: Constants.helvetica,fontSize:displayWidth(context) * FontSize.s005),),
                 ),
               ),
             ),
@@ -90,7 +85,7 @@ class HomePage extends StatelessWidget {
                 child: Text(
                   Constants.nameProfile,
                  style: TextStyle(
-                    color: Colors.deepOrange,
+                  color:CustomColors.OrangePeel,
                     fontSize: 24,
                     fontWeight: FontWeight.bold),
                 ),
@@ -105,7 +100,7 @@ class HomePage extends StatelessWidget {
                   textAlign: TextAlign.justify,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    color: Colors.deepOrange,
+                    color:CustomColors.OrangePeel
                   ),
                 ),
               ),
@@ -117,16 +112,22 @@ class HomePage extends StatelessWidget {
                 height: 40,
                 margin: EdgeInsets.all(8),
                 child:  ElevatedButton(
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
+                  style: ElevatedButton.styleFrom(backgroundColor: Get.isDarkMode
+                      ? CustomColors.Jet
+                      : CustomColors.DarkOrange),
                   onPressed: () {launchUrlStart(url: "https://www.linkedin.com/in/nandaadisaputra/"); },
-                  child: Text(Constants.visitLinkedin, style: TextStyle(color: Colors.white, fontFamily: Constants.helvetica, fontSize: displayWidth(context) * FontSize.s005),)
+                  child: Text(Constants.visitLinkedin, style: TextStyle(color: Get.isDarkMode
+                      ? CustomColors.White
+                      : CustomColors.White, fontFamily: Constants.helvetica, fontSize: displayWidth(context) * FontSize.s005),)
                 ),
               ),
             )
           ],
         ),
         bottomNavigationBar: BottomAppBar(
-          color: Colors.orange,
+          color: Get.isDarkMode
+              ? CustomColors.EerieBlack
+              : CustomColors.DarkOrange,
           elevation: 20.0,
           child: Row(
             children: [
@@ -152,13 +153,15 @@ class HomePage extends StatelessWidget {
                   height: 60.0,
                   child: InkWell(
                     onTap: () => Get.to(
-                      const SearchRestaurantScreen(),
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text("Under Development"),
+                      )),
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.reviews, color: Colors.white),
-                        Text(Constants.addReview, style: TextStyle(color: Colors.white)),
+                        Icon(Icons.favorite, color: Colors.white),
+                        Text(Constants.addFavorite, style: TextStyle(color: Colors.white)),
                       ],
                     ),
                   ),

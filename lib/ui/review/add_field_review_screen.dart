@@ -66,7 +66,7 @@ class AddReviewFormScreen extends StatelessWidget {
                   hintText: AppStrings.reviewDate),
             ),
           ),
-          AppSizes.hGap20,
+          AppSizes.hSizeBox20,
           Obx(() {
             return Container(
               height: 45,

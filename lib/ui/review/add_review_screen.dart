@@ -72,7 +72,7 @@ class AddReviewScreen extends StatelessWidget {
                   labelText: AppStrings.reviewDate,
                   hintText: AppStrings.reviewDate),
             ),
-            AppSizes.hGap20,
+            AppSizes.hSizeBox20,
             Container(
               height: 45,
               width: double.infinity,

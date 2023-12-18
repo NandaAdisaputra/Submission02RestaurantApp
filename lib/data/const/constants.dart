@@ -5,6 +5,7 @@ class Constants {
   static const String search ="Cari Restaurant";
   static const String name ="name";
   static const String rating ="rating";
+  static const String ratingDetail ="Rating :";
   static const String city ="city";
   static const String image ="pictureId";
   static const String id ="id";
@@ -18,6 +19,7 @@ class Constants {
   static const String searchRestaurantYourLikes ="Temukan Restoran yang Anda Sukai";
   static const String searchTitle ="Search";
   static const String addReview ="Review";
+  static const String addFavorite ="Favorit";
   static const String profileUsers ="Profile";
   static const String visitLinkedin ="Visit My linkedin";
   static const String home ="Home";

@@ -10,14 +10,11 @@ class ImageAssets {
 }
 
 class JsonAssets {
-  static String loading = "$JSON_PATH/loading.json";
   static String search = "$JSON_PATH/search.json";
   static String splash = "$JSON_PATH/lottie_restaurant.json";
-  static String error = "$JSON_PATH/error.json";
-  static String empty = "$JSON_PATH/empty.json";
-  static String success = "$JSON_PATH/success.json";
 }
+
 class IconAssets {
-  static Icon  nextIcon = const Icon(Icons.arrow_forward_ios);
-  static Icon  addIcon = const Icon(Icons.add, color: Colors.white);
+  static Icon nextIcon = const Icon(Icons.arrow_forward_ios);
+  static Icon addIcon = const Icon(Icons.add, color: Colors.white);
 }

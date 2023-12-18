@@ -3,11 +3,13 @@ import 'package:get/get.dart';
 import 'package:submission02/ui/review/review_controller.dart';
 import 'package:submission02/ui/review/review_detail_screen.dart';
 import 'package:submission02/utils/resource_helper/assets.dart';
-import 'package:submission02/utils/resource_helper/styles.dart';
+import 'package:submission02/utils/resource_helper/fonts.dart';
+import 'package:submission02/utils/resource_helper/sizes.dart';
 
 // ignore: must_be_immutable
 class ReviewListWidget extends StatelessWidget {
   ReviewController reviewController = Get.put(ReviewController());
+
   ReviewListWidget({super.key});
 
   @override
@@ -22,11 +24,16 @@ class ReviewListWidget extends StatelessWidget {
           itemBuilder: (context, index) {
             final review = reviewController.reviews[index];
             return ListTile(
-              title: Text(
-                review.name,
-                style:  TextStyles.txtBold24,
-              ),
-              subtitle: Text(review.review, style: TextStyles.txtSemiBold18),
+              title: Text(review.name,
+                  style: TextStyle(
+                      color: Colors.orange,
+                      fontSize: displayWidth(context) * FontSize.s0045,
+                      fontWeight: FontWeight.normal)),
+              subtitle: Text(review.review,
+                  style: TextStyle(
+                      color: Colors.orange,
+                      fontSize: displayWidth(context) * FontSize.s0045,
+                      fontWeight: FontWeight.normal)),
               trailing: IconAssets.nextIcon,
               onTap: () {
                 Get.to(ReviewDetailsScreen(review: review));

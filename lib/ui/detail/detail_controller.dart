@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'dart:convert';
@@ -6,6 +7,7 @@ import 'package:submission02/data/base/endpoints.dart' as Endpoints;
 import 'package:submission02/utils/error_helper/error_handler.dart';
 
 class DetailRestaurantController extends GetxController {
+  var isDark = false;
   var listBodyRestaurants;
   var listBodyRestaurantsMenusFoods = [];
   var listBodyRestaurantsMenusDrinks = [];
@@ -33,5 +35,19 @@ class DetailRestaurantController extends GetxController {
     } on Error {
       rethrow;
     }
+  }
+  void increment() {
+    update();
+  }
+
+  void changeTheme(state) {
+    if (state == true) {
+      isDark = true;
+      Get.changeTheme(ThemeData.dark());
+    } else {
+      isDark = false;
+      Get.changeTheme(ThemeData.light());
+    }
+    update();
   }
 }

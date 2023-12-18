@@ -5,6 +5,7 @@ import 'package:submission02/data/const/constants.dart';
 import 'package:submission02/ui/detail/detail_controller.dart';
 import 'package:submission02/ui/review/add_field_review_screen.dart';
 import 'package:submission02/utils/resource_helper/assets.dart';
+import 'package:submission02/utils/resource_helper/colors.dart';
 import 'package:submission02/utils/resource_helper/fonts.dart';
 import 'package:submission02/utils/resource_helper/sizes.dart';
 
@@ -46,12 +47,13 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                     Text(
                       '$restaurantNAME',
                       style: TextStyle(
-                          color: Colors.deepOrange,
+                          color:
+                              Get.isDarkMode ?  CustomColors.Pear: CustomColors.DarkOrange,
                           fontSize: displayWidth(context) * FontSize.s008,
                           fontWeight: FontWeight.bold,
-                          fontFamily: 'Helvetica'),
+                          fontFamily: Constants.helvetica),
                     ),
-                    const SizedBox(height: 5),
+                    AppSizes.hSizeBox15,
                     Container(
                       padding: EdgeInsets.zero,
                       child: Row(
@@ -62,26 +64,42 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                               Center(
                                 child: Icon(
                                   Icons.location_on_outlined,
-                                  color: Colors.orange,
+                                  color: Get.isDarkMode
+                                      ? CustomColors.DarkOrange
+                                      : CustomColors.GreenRyb,
                                 ),
                               ),
-                              SizedBox(
-                                  width:
-                                      displayWidth(context) * FontSize.s0008),
+                              AppSizes.wSizeBox10,
                               Center(
                                 child: Text(
                                   '$restaurantCITY',
                                   style: TextStyle(
                                       fontSize:
                                           displayWidth(context) * FontSize.s005,
-                                      color: Colors.orange),
+                                      color: Get.isDarkMode
+                                          ? CustomColors.DarkOrange
+                                          : CustomColors.GreenRyb,
                                 ),
                               ),
-                            ],
+                              )],
                           ),
                           Container(
                               height: 30,
-                              child: VerticalDivider(color: Colors.red)),
+                              child: VerticalDivider(
+                                  color: Get.isDarkMode
+                                      ? CustomColors.GreenRyb
+                                      : Colors.orange)),
+                          Center(
+                            child: Text(
+                              Constants.ratingDetail,
+                              style: TextStyle(
+                                  fontSize:
+                                      displayWidth(context) * FontSize.s005,
+                                  color: Get.isDarkMode
+                                      ? CustomColors.OrangePeel
+                                      : CustomColors.DarkOrange),
+                            ),
+                          ),
                           RatingBar.builder(
                             ignoreGestures: true,
                             itemSize: displayWidth(context) * FontSize.s0045,
@@ -94,52 +112,60 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                             itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
                             itemBuilder: (_, __) => Icon(
                               Icons.star,
-                              color: Colors.blue,
+                              color: Get.isDarkMode
+                                  ? CustomColors.Gold
+                                  : CustomColors.Gold
                             ),
                             onRatingUpdate: (rating) {},
-                          ),
-                          SizedBox(
-                              width: displayWidth(context) * FontSize.s0085),
-                          Row(
-                            children: [
-                              Text(
-                                double.parse("$restaurantRATING").toString(),
-                                style: TextStyle(
-                                    color: Colors.blue,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize:
-                                        displayWidth(context) * FontSize.s005),
-                              ),
-                            ],
                           ),
                         ],
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    AppSizes.hSizeBox15,
                     Divider(
-                      color: Colors.redAccent,
+                      color: Get.isDarkMode
+                          ? CustomColors.UsafaBlue
+                          : CustomColors.SpanishViridian,
                       thickness: 5,
                     ),
                     Padding(padding: EdgeInsets.all(3)),
-                    Center(
-                      child: Text(
-                        '$restaurantDESCRIPTION'.toString(),
-                        textAlign: TextAlign.justify,
-                        maxLines: 4,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: displayWidth(context) * FontSize.s005,
-                            fontWeight: FontWeight.normal),
+                    Container(
+                      margin: EdgeInsets.only(bottom: 24),
+                      child: Center(
+                        child: Text(
+                          '$restaurantDESCRIPTION'.toString(),
+                          textAlign: TextAlign.justify,
+                          maxLines: 4,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              color: Get.isDarkMode
+                                  ? CustomColors.White
+                                  : CustomColors.Black,
+                              fontSize: displayWidth(context) * FontSize.s005,
+                              fontWeight: FontWeight.normal),
+                        ),
                       ),
                     ),
-                    Container(
-                        margin: EdgeInsets.fromLTRB(16, 8, 8, 8),
-                        child: Text(Constants.menuFoods,
-                            style: TextStyle(
-                                color: Colors.deepOrange,
-                                fontSize: displayWidth(context) * FontSize.s005,
-                                fontFamily: Constants.helvetica))),
+                    Row(
+                      children: [
+                        Container(
+                            height: 30,
+                            child: VerticalDivider(
+                                color: Get.isDarkMode
+                                    ? CustomColors.DarkOrange
+                                    : CustomColors.Scarlet)),
+                        Container(
+                            margin: EdgeInsets.fromLTRB(16, 8, 8, 8),
+                            child: Text(Constants.menuFoods,
+                                style: TextStyle(
+                                    color: Get.isDarkMode
+                                        ? CustomColors.DarkOrange
+                                        : CustomColors.Scarlet,
+                                    fontSize:
+                                        displayWidth(context) * FontSize.s005,
+                                    fontFamily: Constants.helvetica))),
+                      ],
+                    ),
                     SizedBox(
                       height: 80, // Card height
                       child: PageView.builder(
@@ -159,7 +185,9 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                                 child: Text(
                                   foodName,
                                   style: TextStyle(
-                                      color: Colors.orange,
+                                      color: Get.isDarkMode
+                                          ? CustomColors.AppleGreen
+                                          :  CustomColors.DarkOrange,
                                       fontSize: displayWidth(context) *
                                           FontSize.s0045,
                                       fontWeight: FontWeight.normal),
@@ -170,13 +198,26 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                         },
                       ),
                     ),
-                    Container(
-                        margin: EdgeInsets.all(8),
-                        child: Text(Constants.menuDrinks,
-                            style: TextStyle(
-                                color: Colors.deepOrange,
-                                fontSize: displayWidth(context) * FontSize.s005,
-                                fontFamily: Constants.helvetica))),
+                    Row(
+                      children: [
+                        Container(
+                            height: 30,
+                            child: VerticalDivider(
+                                color: Get.isDarkMode
+                                    ? CustomColors.DarkOrange
+                                    : CustomColors.Scarlet)),
+                        Container(
+                            margin: EdgeInsets.fromLTRB(16, 8, 8, 8),
+                            child: Text(Constants.menuDrinks,
+                                style: TextStyle(
+                                    color: Get.isDarkMode
+                                        ? CustomColors.DarkOrange
+                                        : CustomColors.Scarlet,
+                                    fontSize:
+                                        displayWidth(context) * FontSize.s005,
+                                    fontFamily: Constants.helvetica))),
+                      ],
+                    ),
                     Container(
                       margin: EdgeInsets.only(bottom: 24),
                       child: SizedBox(
@@ -199,7 +240,9 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                                   child: Text(
                                     drinkName,
                                     style: TextStyle(
-                                        color: Colors.orange,
+                                        color: Get.isDarkMode
+                                            ? CustomColors.AppleGreen
+                                            :  CustomColors.DarkOrange,
                                         fontSize: displayWidth(context) *
                                             FontSize.s0045,
                                         fontWeight: FontWeight.normal),
@@ -217,7 +260,9 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.deepOrange,
+        backgroundColor:Get.isDarkMode
+            ? CustomColors.UsafaBlue
+            :  CustomColors.SpanishViridian,
         onPressed: () {
           Get.to(AddReviewFormScreen());
         },
@@ -225,7 +270,7 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             IconAssets.addIcon,
-            SizedBox(width: 8),
+            AppSizes.wSizeBox8,
             Text(Constants.addReview, style: TextStyle(color: Colors.white)),
           ],
         ),
@@ -249,9 +294,9 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
           decoration: const BoxDecoration(
             boxShadow: [
               BoxShadow(
-                color: Colors.orangeAccent,
+                color: CustomColors.SpanishViridian,
                 spreadRadius: 5,
-                blurRadius: 7,
+                blurRadius: 15,
                 offset: Offset(0, 3), // changes position of shadow
               ),
             ],
@@ -270,16 +315,19 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                 itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
                 itemBuilder: (_, __) => Icon(
                   Icons.star,
-                  color: Colors.yellow,
+                  color: Get.isDarkMode ?  CustomColors.Gold: CustomColors.Gold,
                 ),
                 onRatingUpdate: (rating) {},
               ),
-              Text(
-                double.parse("$restaurantRATING").toString(),
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25),
+              Container(
+                margin: EdgeInsets.only(left: 125, right: 4),
+                child: Text(
+                  double.parse("$restaurantRATING").toString(),
+                  style: TextStyle(
+                      color: Get.isDarkMode ?  CustomColors.White: CustomColors.SelectiveYellow,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25),
+                ),
               ),
             ],
           ),

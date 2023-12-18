@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:submission02/data/model/review.dart';
-import 'package:submission02/utils/resource_helper/styles.dart';
+import 'package:submission02/utils/resource_helper/fonts.dart';
 import '../../utils/resource_helper/sizes.dart';
 import '../../utils/resource_helper/strings.dart';
 
@@ -22,23 +22,47 @@ class ReviewDetailsScreen extends StatelessWidget {
           children: [
             Row(
               children: [
-                Text(AppStrings.reviewName, style: TextStyles.txtBold14),
-                AppSizes.wGap20,
-                Text(review.name, style:  TextStyles.txtSemiBold18)
+                Text(AppStrings.reviewName,  style: TextStyle(
+            color: Colors.orange,
+            fontSize: displayWidth(context) *
+                FontSize.s0045,
+            fontWeight: FontWeight.normal)),
+                AppSizes.wSizeBox20,
+                Text(review.name, style: TextStyle(
+                    color: Colors.orange,
+                    fontSize: displayWidth(context) *
+                        FontSize.s0045,
+                    fontWeight: FontWeight.normal)),
               ],
             ),
             Row(
               children: [
-                Text(AppStrings.reviewDesc, style: TextStyles.txtBold14),
-                AppSizes.wGap20,
-                Text(review.review, style: TextStyles.txtSemiBold18)
+                Text(AppStrings.reviewDesc,  style: TextStyle(
+                    color: Colors.orange,
+                    fontSize: displayWidth(context) *
+                        FontSize.s0045,
+                    fontWeight: FontWeight.normal)),
+                AppSizes.wSizeBox20,
+                Text(review.review,  style: TextStyle(
+                    color: Colors.orange,
+                    fontSize: displayWidth(context) *
+                        FontSize.s0045,
+                    fontWeight: FontWeight.normal)),
               ],
             ),
             Row(
               children: [
-                Text(AppStrings.reviewDate, style: TextStyles.txtBold14),
-                AppSizes.wGap20,
-                Text(review.date, style: TextStyles.txtSemiBold18),
+                Text(AppStrings.reviewDate,  style: TextStyle(
+                    color: Colors.orange,
+                    fontSize: displayWidth(context) *
+                        FontSize.s0045,
+                    fontWeight: FontWeight.normal)),
+                AppSizes.wSizeBox20,
+                Text(review.date,  style: TextStyle(
+                    color: Colors.orange,
+                    fontSize: displayWidth(context) *
+                        FontSize.s0045,
+                    fontWeight: FontWeight.normal)),
               ],
             ),
           ],

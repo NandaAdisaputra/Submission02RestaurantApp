@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
@@ -7,6 +8,7 @@ import 'package:submission02/utils/error_helper/error_handler.dart';
 import 'package:submission02/data/base/endpoints.dart' as Endpoints;
 
 class SearchRestaurantController extends GetxController {
+  var isDark = false;
   final queryRestaurantsSearch = TextEditingController();
   var queryInp = ''.obs;
   var listBodyRestaurants;
@@ -31,5 +33,19 @@ class SearchRestaurantController extends GetxController {
     } finally {
       isDataLoading(false);
     }
+  }
+  void increment() {
+    update();
+  }
+
+  void changeTheme(state) {
+    if (state == true) {
+      isDark = true;
+      Get.changeTheme(ThemeData.dark());
+    } else {
+      isDark = false;
+      Get.changeTheme(ThemeData.light());
+    }
+    update();
   }
 }
