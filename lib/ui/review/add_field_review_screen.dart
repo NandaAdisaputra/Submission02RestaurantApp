@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:submission02/data/const/constants.dart';
 import 'package:submission02/ui/review/review_controller.dart';
+import 'package:submission02/utils/resource_helper/colors.dart';
 import 'package:submission02/utils/resource_helper/sizes.dart';
 import 'package:submission02/utils/resource_helper/strings.dart';
 import 'text_field_controller.dart';
@@ -20,7 +21,8 @@ class AddReviewFormScreen extends StatelessWidget {
         title: Text(AppStrings.addReview,
             style: TextStyle(
                 color: Colors.white, fontFamily: Constants.helvetica)),
-        backgroundColor: Colors.deepOrange,
+        backgroundColor:
+            Get.isDarkMode ? CustomColors.Jet : CustomColors.DarkOrange,
       ),
       body: Column(
         children: [
@@ -32,7 +34,9 @@ class AddReviewFormScreen extends StatelessWidget {
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(
                     Icons.person,
-                    color: Colors.deepOrange,
+                    color: Get.isDarkMode
+                        ? CustomColors.White
+                        : CustomColors.DarkOrange,
                   ),
                   labelText: AppStrings.reviewName,
                   hintText: AppStrings.reviewName),
@@ -46,7 +50,9 @@ class AddReviewFormScreen extends StatelessWidget {
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(
                     Icons.description,
-                    color: Colors.deepOrange,
+                    color: Get.isDarkMode
+                        ? CustomColors.White
+                        : CustomColors.DarkOrange,
                   ),
                   labelText: AppStrings.reviewDesc,
                   hintText: AppStrings.reviewDesc),
@@ -60,7 +66,9 @@ class AddReviewFormScreen extends StatelessWidget {
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(
                     Icons.date_range,
-                    color: Colors.deepOrange,
+                    color: Get.isDarkMode
+                        ? CustomColors.White
+                        : CustomColors.DarkOrange,
                   ),
                   labelText: AppStrings.reviewDate,
                   hintText: AppStrings.reviewDate),
@@ -72,7 +80,10 @@ class AddReviewFormScreen extends StatelessWidget {
               height: 45,
               width: double.infinity,
               child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: Colors.orangeAccent),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Get.isDarkMode
+                          ? CustomColors.Jet
+                          : CustomColors.DarkOrange),
                   onPressed: textFieldController.isButtonEnabled.value
                       ? () {
                           createNewReview();
@@ -84,7 +95,9 @@ class AddReviewFormScreen extends StatelessWidget {
                   child: Text(
                     AppStrings.addReview,
                     style: TextStyle(
-                        color: Colors.deepOrange,
+                        color: Get.isDarkMode
+                            ? CustomColors.White
+                            : CustomColors.DarkOrange,
                         fontFamily: Constants.helvetica),
                   )),
             );

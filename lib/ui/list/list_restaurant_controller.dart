@@ -7,7 +7,6 @@ import 'package:submission02/data/const/constants.dart';
 import 'package:submission02/utils/error_helper/error_handler.dart';
 
 class ListRestaurantController extends GetxController {
-  var count = 0;
   var listBodyRestaurants = [];
   var foods;
   var drinks;
@@ -34,20 +33,4 @@ class ListRestaurantController extends GetxController {
       isDataLoading(false);
     }
   }
-  void increment() {
-    count++;
-    update();
-  }
-
-  void changeTheme(state) {
-    if (state == true) {
-      isDark = true;
-      Get.changeTheme(ThemeData.dark());
-    } else {
-      isDark = false;
-      Get.changeTheme(ThemeData.light());
-    }
-    update();
-  }
 }
-

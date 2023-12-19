@@ -24,5 +24,4 @@ class TextFieldController extends GetxController {
       isButtonEnabled.value = true;
     }
   }
-
 }

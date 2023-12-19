@@ -5,7 +5,7 @@ class ReviewBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut<ReviewController>(
-          () => ReviewController(),
+      () => ReviewController(),
     );
   }
 }

@@ -22,47 +22,47 @@ class ReviewDetailsScreen extends StatelessWidget {
           children: [
             Row(
               children: [
-                Text(AppStrings.reviewName,  style: TextStyle(
-            color: Colors.orange,
-            fontSize: displayWidth(context) *
-                FontSize.s0045,
-            fontWeight: FontWeight.normal)),
+                Text(AppStrings.reviewName,
+                    style: TextStyle(
+                        color: Colors.orange,
+                        fontSize: displayWidth(context) * FontSize.s0045,
+                        fontWeight: FontWeight.normal)),
                 AppSizes.wSizeBox20,
-                Text(review.name, style: TextStyle(
-                    color: Colors.orange,
-                    fontSize: displayWidth(context) *
-                        FontSize.s0045,
-                    fontWeight: FontWeight.normal)),
+                Text(review.name,
+                    style: TextStyle(
+                        color: Colors.orange,
+                        fontSize: displayWidth(context) * FontSize.s0045,
+                        fontWeight: FontWeight.normal)),
               ],
             ),
             Row(
               children: [
-                Text(AppStrings.reviewDesc,  style: TextStyle(
-                    color: Colors.orange,
-                    fontSize: displayWidth(context) *
-                        FontSize.s0045,
-                    fontWeight: FontWeight.normal)),
+                Text(AppStrings.reviewDesc,
+                    style: TextStyle(
+                        color: Colors.orange,
+                        fontSize: displayWidth(context) * FontSize.s0045,
+                        fontWeight: FontWeight.normal)),
                 AppSizes.wSizeBox20,
-                Text(review.review,  style: TextStyle(
-                    color: Colors.orange,
-                    fontSize: displayWidth(context) *
-                        FontSize.s0045,
-                    fontWeight: FontWeight.normal)),
+                Text(review.review,
+                    style: TextStyle(
+                        color: Colors.orange,
+                        fontSize: displayWidth(context) * FontSize.s0045,
+                        fontWeight: FontWeight.normal)),
               ],
             ),
             Row(
               children: [
-                Text(AppStrings.reviewDate,  style: TextStyle(
-                    color: Colors.orange,
-                    fontSize: displayWidth(context) *
-                        FontSize.s0045,
-                    fontWeight: FontWeight.normal)),
+                Text(AppStrings.reviewDate,
+                    style: TextStyle(
+                        color: Colors.orange,
+                        fontSize: displayWidth(context) * FontSize.s0045,
+                        fontWeight: FontWeight.normal)),
                 AppSizes.wSizeBox20,
-                Text(review.date,  style: TextStyle(
-                    color: Colors.orange,
-                    fontSize: displayWidth(context) *
-                        FontSize.s0045,
-                    fontWeight: FontWeight.normal)),
+                Text(review.date,
+                    style: TextStyle(
+                        color: Colors.orange,
+                        fontSize: displayWidth(context) * FontSize.s0045,
+                        fontWeight: FontWeight.normal)),
               ],
             ),
           ],

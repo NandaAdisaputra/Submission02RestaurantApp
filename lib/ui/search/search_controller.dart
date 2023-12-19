@@ -8,11 +8,11 @@ import 'package:submission02/utils/error_helper/error_handler.dart';
 import 'package:submission02/data/base/endpoints.dart' as Endpoints;
 
 class SearchRestaurantController extends GetxController {
-  var isDark = false;
   final queryRestaurantsSearch = TextEditingController();
   var queryInp = ''.obs;
   var listBodyRestaurants;
   var isDataLoading = false.obs;
+
   Future<dynamic> getListRestaurant() async {
     WidgetsFlutterBinding.ensureInitialized();
     String urlSearch = Endpoints.getSearch.search + "?q=$queryInp";
@@ -33,19 +33,5 @@ class SearchRestaurantController extends GetxController {
     } finally {
       isDataLoading(false);
     }
-  }
-  void increment() {
-    update();
-  }
-
-  void changeTheme(state) {
-    if (state == true) {
-      isDark = true;
-      Get.changeTheme(ThemeData.dark());
-    } else {
-      isDark = false;
-      Get.changeTheme(ThemeData.light());
-    }
-    update();
   }
 }

@@ -5,7 +5,7 @@ class SearchRestaurantBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut<SearchRestaurantController>(
-          () => SearchRestaurantController(),
+      () => SearchRestaurantController(),
     );
   }
 }

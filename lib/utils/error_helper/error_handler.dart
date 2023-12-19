@@ -24,8 +24,11 @@ Failure _handleError(DioException error) {
     case DioExceptionType.receiveTimeout:
       return DataSource.RECIEVE_TIMEOUT.getFailure();
     case DioExceptionType.badResponse:
-      if (error.response != null && error.response?.statusCode != null && error.response?.statusMessage != null) {
-        return Failure(error.response?.statusCode ?? 0, error.response?.data["message"] ?? "");
+      if (error.response != null &&
+          error.response?.statusCode != null &&
+          error.response?.statusMessage != null) {
+        return Failure(error.response?.statusCode ?? 0,
+            error.response?.data["message"] ?? "");
       } else {
         return DataSource.DEFAULT.getFailure();
       }
@@ -114,12 +117,18 @@ class ResponseCode {
 
 class ResponseMessage {
   static const String SUCCESS = AppStrings.success; // success with data
-  static const String NO_CONTENT = AppStrings.success; // success with no data (no content)
-  static const String BAD_REQUEST = AppStrings.strBadRequestError; // failure, API rejected request
-  static const String UNAUTORISED = AppStrings.strUnauthorizedError; // failure, user is not authorised
-  static const String FORBIDDEN = AppStrings.strForbiddenError; //  failure, API rejected request
-  static const String INTERNAL_SERVER_ERROR = AppStrings.strInternalServerError; // failure, crash in server side
-  static const String NOT_FOUND = AppStrings.strNotFoundError; // failure, crash in server side
+  static const String NO_CONTENT =
+      AppStrings.success; // success with no data (no content)
+  static const String BAD_REQUEST =
+      AppStrings.strBadRequestError; // failure, API rejected request
+  static const String UNAUTORISED =
+      AppStrings.strUnauthorizedError; // failure, user is not authorised
+  static const String FORBIDDEN =
+      AppStrings.strForbiddenError; //  failure, API rejected request
+  static const String INTERNAL_SERVER_ERROR =
+      AppStrings.strInternalServerError; // failure, crash in server side
+  static const String NOT_FOUND =
+      AppStrings.strNotFoundError; // failure, crash in server side
 
   // local status code
   static const String CONNECT_TIMEOUT = AppStrings.strTimeoutError;

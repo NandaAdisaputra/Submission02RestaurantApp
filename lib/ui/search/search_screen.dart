@@ -116,8 +116,12 @@ class SearchRestaurantScreen extends GetView<SearchRestaurantController> {
                                               );
                                             },
                                             child: Card(
-                                              margin: EdgeInsets.only(left: 12, right: 8, top: 4, bottom: 12),
-                                              color:  Get.isDarkMode
+                                              margin: EdgeInsets.only(
+                                                  left: 12,
+                                                  right: 8,
+                                                  top: 4,
+                                                  bottom: 12),
+                                              color: Get.isDarkMode
                                                   ? CustomColors.Jet
                                                   : CustomColors.Lavender,
                                               elevation: 8,
@@ -125,13 +129,21 @@ class SearchRestaurantScreen extends GetView<SearchRestaurantController> {
                                                 children: [
                                                   Flexible(
                                                     child: Container(
-                                                      padding: EdgeInsets.fromLTRB(16, 12, 8, 12),
+                                                      padding:
+                                                          EdgeInsets.fromLTRB(
+                                                              16, 12, 8, 12),
                                                       child: ClipRRect(
-                                                        borderRadius: BorderRadius.circular(10),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
                                                         child: Image.network(
                                                             'https://restaurant-api.dicoding.dev/images/medium/${data[Constants.image]}',
                                                             fit: BoxFit.cover,
-                                                            width: MediaQuery.of(context).size.width,
+                                                            width:
+                                                                MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width,
                                                             height: 80),
                                                       ),
                                                     ),
@@ -141,46 +153,70 @@ class SearchRestaurantScreen extends GetView<SearchRestaurantController> {
                                                       height: 50,
                                                       child: VerticalDivider(
                                                           color: Get.isDarkMode
-                                                              ? CustomColors.DarkOrange
-                                                              : CustomColors.Scarlet)),
+                                                              ? CustomColors
+                                                                  .DarkOrange
+                                                              : CustomColors
+                                                                  .Scarlet)),
                                                   Flexible(
                                                     flex: 2,
                                                     child: Container(
                                                       child: Column(
-                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
                                                         children: [
                                                           Row(
                                                             children: [
                                                               Text(
-                                                                data[Constants.name],
+                                                                data[Constants
+                                                                    .name],
                                                                 style: TextStyle(
-                                                                    color:  Get.isDarkMode
-                                                                        ? CustomColors.OrangePeel
-                                                                        :CustomColors.DarkOrange,
-                                                                    fontSize:
-                                                                    displayWidth(context) * FontSize.s0045,
-                                                                    fontWeight: FontWeight.bold,
-                                                                    fontFamily: Constants.helvetica),
+                                                                    color: Get
+                                                                            .isDarkMode
+                                                                        ? CustomColors
+                                                                            .OrangePeel
+                                                                        : CustomColors
+                                                                            .DarkOrange,
+                                                                    fontSize: displayWidth(
+                                                                            context) *
+                                                                        FontSize
+                                                                            .s0045,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    fontFamily:
+                                                                        Constants
+                                                                            .helvetica),
                                                               ),
                                                             ],
                                                           ),
                                                           Row(
                                                             children: [
                                                               Icon(
-                                                                  Icons.location_on_outlined,
-                                                                  color: Get.isDarkMode
-                                                                      ? CustomColors.GreenRyb
-                                                                      : CustomColors.Scarlet
-                                                              ),
-                                                              AppSizes.wSizeBox8,
+                                                                  Icons
+                                                                      .location_on_outlined,
+                                                                  color: Get
+                                                                          .isDarkMode
+                                                                      ? CustomColors
+                                                                          .GreenRyb
+                                                                      : CustomColors
+                                                                          .Scarlet),
+                                                              AppSizes
+                                                                  .wSizeBox8,
                                                               Text(
-                                                                data[Constants.city],
+                                                                data[Constants
+                                                                    .city],
                                                                 style: TextStyle(
-                                                                    fontSize:
-                                                                    displayWidth(context) * FontSize.s0045,
-                                                                    color:  Get.isDarkMode
-                                                                        ? CustomColors.GreenRyb
-                                                                        :  CustomColors.Scarlet),
+                                                                    fontSize: displayWidth(
+                                                                            context) *
+                                                                        FontSize
+                                                                            .s0045,
+                                                                    color: Get
+                                                                            .isDarkMode
+                                                                        ? CustomColors
+                                                                            .GreenRyb
+                                                                        : CustomColors
+                                                                            .Scarlet),
                                                               ),
                                                             ],
                                                           ),
@@ -188,25 +224,45 @@ class SearchRestaurantScreen extends GetView<SearchRestaurantController> {
                                                           Row(
                                                             children: [
                                                               RatingBar.builder(
-                                                                ignoreGestures: true,
-                                                                itemSize: displayWidth(context) * FontSize.s005,
-                                                                initialRating: data[Constants.rating].toDouble(),
-                                                                glowColor: Colors.transparent,
+                                                                ignoreGestures:
+                                                                    true,
+                                                                itemSize: displayWidth(
+                                                                        context) *
+                                                                    FontSize
+                                                                        .s005,
+                                                                initialRating: data[
+                                                                        Constants
+                                                                            .rating]
+                                                                    .toDouble(),
+                                                                glowColor: Colors
+                                                                    .transparent,
                                                                 minRating: 1,
-                                                                direction: Axis.horizontal,
-                                                                allowHalfRating: true,
+                                                                direction: Axis
+                                                                    .horizontal,
+                                                                allowHalfRating:
+                                                                    true,
                                                                 itemCount: 5,
-                                                                itemPadding:
-                                                                EdgeInsets.symmetric(horizontal: 4.0),
-                                                                itemBuilder: (context, _) => Icon(
+                                                                itemPadding: EdgeInsets
+                                                                    .symmetric(
+                                                                        horizontal:
+                                                                            4.0),
+                                                                itemBuilder:
+                                                                    (context,
+                                                                            _) =>
+                                                                        Icon(
                                                                   Icons.star,
-                                                                  color: Get.isDarkMode
-                                                                      ? CustomColors.Gold
-                                                                      : CustomColors.DarkCornflowerBlue,
+                                                                  color: Get
+                                                                          .isDarkMode
+                                                                      ? CustomColors
+                                                                          .Gold
+                                                                      : CustomColors
+                                                                          .DarkCornflowerBlue,
                                                                 ),
-                                                                onRatingUpdate: (rating) {},
+                                                                onRatingUpdate:
+                                                                    (rating) {},
                                                               ),
-                                                              AppSizes.wSizeBox50
+                                                              AppSizes
+                                                                  .wSizeBox50
                                                             ],
                                                           ),
                                                         ],

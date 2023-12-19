@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:submission02/ui/review/review_controller.dart';
 import 'package:submission02/ui/review/review_detail_screen.dart';
 import 'package:submission02/utils/resource_helper/assets.dart';
+import 'package:submission02/utils/resource_helper/colors.dart';
 import 'package:submission02/utils/resource_helper/fonts.dart';
 import 'package:submission02/utils/resource_helper/sizes.dart';
 
@@ -26,12 +27,16 @@ class ReviewListWidget extends StatelessWidget {
             return ListTile(
               title: Text(review.name,
                   style: TextStyle(
-                      color: Colors.orange,
+                      color: Get.isDarkMode
+                          ? CustomColors.White
+                          : CustomColors.DarkOrange,
                       fontSize: displayWidth(context) * FontSize.s0045,
                       fontWeight: FontWeight.normal)),
               subtitle: Text(review.review,
                   style: TextStyle(
-                      color: Colors.orange,
+                      color: Get.isDarkMode
+                          ? CustomColors.White
+                          : CustomColors.DarkOrange,
                       fontSize: displayWidth(context) * FontSize.s0045,
                       fontWeight: FontWeight.normal)),
               trailing: IconAssets.nextIcon,

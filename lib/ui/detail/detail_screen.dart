@@ -47,8 +47,9 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                     Text(
                       '$restaurantNAME',
                       style: TextStyle(
-                          color:
-                              Get.isDarkMode ?  CustomColors.Pear: CustomColors.DarkOrange,
+                          color: Get.isDarkMode
+                              ? CustomColors.Pear
+                              : CustomColors.DarkOrange,
                           fontSize: displayWidth(context) * FontSize.s008,
                           fontWeight: FontWeight.bold,
                           fontFamily: Constants.helvetica),
@@ -74,14 +75,15 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                                 child: Text(
                                   '$restaurantCITY',
                                   style: TextStyle(
-                                      fontSize:
-                                          displayWidth(context) * FontSize.s005,
-                                      color: Get.isDarkMode
-                                          ? CustomColors.DarkOrange
-                                          : CustomColors.GreenRyb,
+                                    fontSize:
+                                        displayWidth(context) * FontSize.s005,
+                                    color: Get.isDarkMode
+                                        ? CustomColors.DarkOrange
+                                        : CustomColors.GreenRyb,
+                                  ),
                                 ),
-                              ),
-                              )],
+                              )
+                            ],
                           ),
                           Container(
                               height: 30,
@@ -110,12 +112,10 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                             allowHalfRating: true,
                             itemCount: 5,
                             itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                            itemBuilder: (_, __) => Icon(
-                              Icons.star,
-                              color: Get.isDarkMode
-                                  ? CustomColors.Gold
-                                  : CustomColors.Gold
-                            ),
+                            itemBuilder: (_, __) => Icon(Icons.star,
+                                color: Get.isDarkMode
+                                    ? CustomColors.Gold
+                                    : CustomColors.Gold),
                             onRatingUpdate: (rating) {},
                           ),
                         ],
@@ -187,7 +187,7 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                                   style: TextStyle(
                                       color: Get.isDarkMode
                                           ? CustomColors.AppleGreen
-                                          :  CustomColors.DarkOrange,
+                                          : CustomColors.DarkOrange,
                                       fontSize: displayWidth(context) *
                                           FontSize.s0045,
                                       fontWeight: FontWeight.normal),
@@ -242,7 +242,7 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                                     style: TextStyle(
                                         color: Get.isDarkMode
                                             ? CustomColors.AppleGreen
-                                            :  CustomColors.DarkOrange,
+                                            : CustomColors.DarkOrange,
                                         fontSize: displayWidth(context) *
                                             FontSize.s0045,
                                         fontWeight: FontWeight.normal),
@@ -260,9 +260,9 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor:Get.isDarkMode
+        backgroundColor: Get.isDarkMode
             ? CustomColors.UsafaBlue
-            :  CustomColors.SpanishViridian,
+            : CustomColors.SpanishViridian,
         onPressed: () {
           Get.to(AddReviewFormScreen());
         },
@@ -315,7 +315,7 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                 itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
                 itemBuilder: (_, __) => Icon(
                   Icons.star,
-                  color: Get.isDarkMode ?  CustomColors.Gold: CustomColors.Gold,
+                  color: Get.isDarkMode ? CustomColors.Gold : CustomColors.Gold,
                 ),
                 onRatingUpdate: (rating) {},
               ),
@@ -324,7 +324,9 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                 child: Text(
                   double.parse("$restaurantRATING").toString(),
                   style: TextStyle(
-                      color: Get.isDarkMode ?  CustomColors.White: CustomColors.SelectiveYellow,
+                      color: Get.isDarkMode
+                          ? CustomColors.White
+                          : CustomColors.SelectiveYellow,
                       fontWeight: FontWeight.bold,
                       fontSize: 25),
                 ),

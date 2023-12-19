@@ -7,7 +7,6 @@ import 'package:submission02/data/base/endpoints.dart' as Endpoints;
 import 'package:submission02/utils/error_helper/error_handler.dart';
 
 class DetailRestaurantController extends GetxController {
-  var isDark = false;
   var listBodyRestaurants;
   var listBodyRestaurantsMenusFoods = [];
   var listBodyRestaurantsMenusDrinks = [];
@@ -15,16 +14,16 @@ class DetailRestaurantController extends GetxController {
 
   Future<dynamic> getListRestaurant() async {
     WidgetsFlutterBinding.ensureInitialized();
-    String urlDetail = Endpoints.getDetailRestaurant.detail+"/$idRestaurant";
+    String urlDetail = Endpoints.getDetailRestaurant.detail + "/$idRestaurant";
     final response = await http
         .get(Uri.parse(urlDetail))
         .timeout((const Duration(seconds: 5)));
     var responseJson = json.decode(response.body);
     listBodyRestaurants = responseJson;
     listBodyRestaurantsMenusFoods =
-    responseJson['restaurant']['menus']['foods'];
+        responseJson['restaurant']['menus']['foods'];
     listBodyRestaurantsMenusDrinks =
-    responseJson['restaurant']['menus']['drinks'];
+        responseJson['restaurant']['menus']['drinks'];
 
     try {
       if (response.statusCode == 200) {
@@ -35,19 +34,5 @@ class DetailRestaurantController extends GetxController {
     } on Error {
       rethrow;
     }
-  }
-  void increment() {
-    update();
-  }
-
-  void changeTheme(state) {
-    if (state == true) {
-      isDark = true;
-      Get.changeTheme(ThemeData.dark());
-    } else {
-      isDark = false;
-      Get.changeTheme(ThemeData.light());
-    }
-    update();
   }
 }

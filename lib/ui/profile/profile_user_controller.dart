@@ -1,10 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ProfileUserController extends GetxController {
-  var count = 0;
-  var isDark = false;
-
   @override
   void onInit() {
     super.onInit();
@@ -18,21 +14,5 @@ class ProfileUserController extends GetxController {
   @override
   void onClose() {
     super.onClose();
-  }
-
-  void increment() {
-    count;
-    update();
-  }
-
-  void changeTheme(state) {
-    if (state == true) {
-      isDark = true;
-      Get.changeTheme(ThemeData.dark());
-    } else {
-      isDark = false;
-      Get.changeTheme(ThemeData.light());
-    }
-    update();
   }
 }

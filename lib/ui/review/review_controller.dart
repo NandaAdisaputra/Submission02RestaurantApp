@@ -6,7 +6,6 @@ import 'package:submission02/data/network/api_service.dart';
 class ReviewController extends GetxController {
   final ApiServices apiServices = ApiServices();
   final reviews = <Review>[].obs;
-  var isDark = false;
 
   @override
   void onInit() {
@@ -25,8 +24,8 @@ class ReviewController extends GetxController {
 
   Future<void> createReview(
       {required String name,
-        required String review,
-        required String date}) async {
+      required String review,
+      required String date}) async {
     try {
       final newReview = await apiServices.createReview(
           name: name, review: review, date: date);
@@ -41,19 +40,5 @@ class ReviewController extends GetxController {
     } catch (e) {
       print('Error creating review Restaurant: $e');
     }
-  }
-  void increment() {
-    update();
-  }
-
-  void changeTheme(state) {
-    if (state == true) {
-      isDark = true;
-      Get.changeTheme(ThemeData.dark());
-    } else {
-      isDark = false;
-      Get.changeTheme(ThemeData.light());
-    }
-    update();
   }
 }

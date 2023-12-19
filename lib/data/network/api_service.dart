@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:submission02/data/base/base_url.dart';
 import 'package:submission02/data/model/review.dart';
+import 'package:submission02/utils/error_helper/error_handler.dart';
 
 class ApiServices {
   Dio dio = Dio();
@@ -25,10 +26,10 @@ class ApiServices {
         }).toList();
         return reviews;
       } else {
-        throw Exception('Failed to load reviews');
+        throw Exception(ErrorHandler.handle(dynamic));
       }
     } catch (e) {
-      throw Exception('Faild to load reviews: $e');
+      throw Exception(ErrorHandler.handle(dynamic) );
     }
   }
 
@@ -50,10 +51,10 @@ class ApiServices {
         );
         return review;
       } else {
-        throw Exception('Failed to create reviews');
+        throw Exception(ErrorHandler.handle(dynamic));
       }
     } catch (e) {
-      throw Exception('Failed to create reviews: $e');
+      throw Exception(ErrorHandler.handle(dynamic));
     }
   }
 }

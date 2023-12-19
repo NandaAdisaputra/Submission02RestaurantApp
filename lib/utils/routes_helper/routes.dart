@@ -6,7 +6,6 @@ import 'package:submission02/ui/search/search_screen.dart';
 import 'package:submission02/ui/splash/splash_screen.dart';
 import 'package:submission02/utils/resource_helper/strings.dart';
 
-
 class Routes {
   static const String splashRoute = "/";
   static const String homeRoute = "/home";
@@ -32,6 +31,7 @@ class RouteGenerator {
         return unDefinedRoute();
     }
   }
+
   static Route<dynamic> unDefinedRoute() {
     return MaterialPageRoute(
       builder: (context) => Scaffold(

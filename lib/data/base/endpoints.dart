@@ -20,10 +20,8 @@ class _postReview {
   final review = BASE_URL.base + "/review";
 }
 
-
 final getListRestaurant = _getListRestaurant();
 final getPicture = _getPicture();
 final getDetailRestaurant = _getDetailRestaurant();
 final getSearch = _getSearch();
 final postReview = _postReview();
-

@@ -30,6 +30,7 @@ class HomeController extends GetxController {
       isDark = true;
       Get.changeTheme(ThemeData.dark());
     } else {
+      isDark = !isDark;
       isDark = false;
       Get.changeTheme(ThemeData.light());
     }

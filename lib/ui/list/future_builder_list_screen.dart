@@ -13,8 +13,10 @@ import '../../utils/resource_helper/colors.dart';
 
 var listRestaurants = Get.put(ListRestaurantController());
 var detailController = Get.put(DetailRestaurantController());
+
 class FutureBuilderRestaurant extends GetView<ListRestaurantController> {
   const FutureBuilderRestaurant({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -59,8 +61,9 @@ class FutureBuilderRestaurant extends GetView<ListRestaurantController> {
                     );
                   },
                   child: Card(
-                    margin: EdgeInsets.only(left: 12, right: 8, top: 4, bottom: 12),
-                    color:  Get.isDarkMode
+                    margin:
+                        EdgeInsets.only(left: 12, right: 8, top: 4, bottom: 12),
+                    color: Get.isDarkMode
                         ? CustomColors.Jet
                         : CustomColors.Lavender,
                     elevation: 8,
@@ -97,11 +100,11 @@ class FutureBuilderRestaurant extends GetView<ListRestaurantController> {
                                     Text(
                                       data[Constants.name],
                                       style: TextStyle(
-                                          color:  Get.isDarkMode
+                                          color: Get.isDarkMode
                                               ? CustomColors.OrangePeel
-                                              :CustomColors.DarkOrange,
-                                          fontSize:
-                                          displayWidth(context) * FontSize.s0045,
+                                              : CustomColors.DarkOrange,
+                                          fontSize: displayWidth(context) *
+                                              FontSize.s0045,
                                           fontWeight: FontWeight.bold,
                                           fontFamily: Constants.helvetica),
                                     ),
@@ -109,21 +112,19 @@ class FutureBuilderRestaurant extends GetView<ListRestaurantController> {
                                 ),
                                 Row(
                                   children: [
-                                    Icon(
-                                      Icons.location_on_outlined,
-                                      color: Get.isDarkMode
-                                          ? CustomColors.GreenRyb
-                                          : CustomColors.Scarlet
-                                    ),
+                                    Icon(Icons.location_on_outlined,
+                                        color: Get.isDarkMode
+                                            ? CustomColors.GreenRyb
+                                            : CustomColors.Scarlet),
                                     AppSizes.wSizeBox8,
                                     Text(
                                       data[Constants.city],
                                       style: TextStyle(
-                                          fontSize:
-                                              displayWidth(context) * FontSize.s0045,
-                                          color:  Get.isDarkMode
+                                          fontSize: displayWidth(context) *
+                                              FontSize.s0045,
+                                          color: Get.isDarkMode
                                               ? CustomColors.GreenRyb
-                                              :  CustomColors.Scarlet),
+                                              : CustomColors.Scarlet),
                                     ),
                                   ],
                                 ),
@@ -132,8 +133,10 @@ class FutureBuilderRestaurant extends GetView<ListRestaurantController> {
                                   children: [
                                     RatingBar.builder(
                                       ignoreGestures: true,
-                                      itemSize: displayWidth(context) * FontSize.s005,
-                                      initialRating: data[Constants.rating].toDouble(),
+                                      itemSize:
+                                          displayWidth(context) * FontSize.s005,
+                                      initialRating:
+                                          data[Constants.rating].toDouble(),
                                       glowColor: Colors.transparent,
                                       minRating: 1,
                                       direction: Axis.horizontal,
@@ -162,9 +165,9 @@ class FutureBuilderRestaurant extends GetView<ListRestaurantController> {
                 );
               } else {
                 getShimmerLoading();
-                return const  CircularProgressIndicator(
+                return const CircularProgressIndicator(
                   value: 0.3,
-                  strokeWidth: 0.08,
+                  strokeWidth: 0.008,
                   color: Colors.greenAccent,
                   backgroundColor: Colors.grey,
                 );
@@ -176,6 +179,7 @@ class FutureBuilderRestaurant extends GetView<ListRestaurantController> {
     );
   }
 }
+
 Shimmer getShimmerLoading() {
   return Shimmer.fromColors(
     baseColor: Colors.grey[300]!,
