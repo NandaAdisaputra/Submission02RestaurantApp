@@ -11,8 +11,8 @@ class AddReviewScreen extends StatelessWidget {
   TextEditingController nameController = TextEditingController();
   TextEditingController reviewController = TextEditingController();
   TextEditingController dateController = TextEditingController();
-
-  AddReviewScreen({super.key});
+  final String? restaurantID;
+  AddReviewScreen({super.key, this.restaurantID});
 
   void _createNewReview() {
     final name = nameController.text;
@@ -20,7 +20,7 @@ class AddReviewScreen extends StatelessWidget {
     final date = dateController.text;
 
     reviewRestaurantController.createReview(
-        name: name, review: review, date: date);
+        name: name, review: review, date: date, id: restaurantID);
 
     nameController.clear();
     reviewController.clear();

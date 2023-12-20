@@ -34,17 +34,17 @@ class ApiServices {
   }
 
   Future<List<Review>> createReview(
-      {required String id,
-      required String name,
-      required String review,
-      required String date}) async {
+      {String? id,
+        String? name,
+        String? review,
+        String? date}) async {
     try {
       final response = await dio.post("/review",
-          data: {'id': id, 'name': name, 'review': review, 'date': date});
+          data: {'id': id, 'name': name, 'review': review, "date": date});
 
       if (response.statusCode == 201) {
         final reviewData =
-            response.data!['customerReviews'] as List<Map<String, dynamic>>;
+        response.data!['customerReviews']; List<dynamic>;
         final reviews = <Review>[];
         for (var review in reviewData) {
           reviews.add(

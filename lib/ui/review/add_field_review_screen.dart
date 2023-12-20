@@ -10,9 +10,9 @@ import 'text_field_controller.dart';
 class AddReviewFormScreen extends StatelessWidget {
   final ReviewController reviewController = Get.find();
   final TextFieldController textFieldController =
-      Get.put(TextFieldController());
-
-  AddReviewFormScreen({super.key});
+  Get.put(TextFieldController());
+  final String? restaurantID;
+  AddReviewFormScreen({super.key, this.restaurantID});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class AddReviewFormScreen extends StatelessWidget {
             style: TextStyle(
                 color: Colors.white, fontFamily: Constants.helvetica)),
         backgroundColor:
-            Get.isDarkMode ? CustomColors.Jet : CustomColors.DarkOrange,
+        Get.isDarkMode ? CustomColors.Jet : CustomColors.DarkOrange,
       ),
       body: Column(
         children: [
@@ -86,11 +86,11 @@ class AddReviewFormScreen extends StatelessWidget {
                           : CustomColors.DarkOrange),
                   onPressed: textFieldController.isButtonEnabled.value
                       ? () {
-                          createNewReview();
-                          textFieldController.nameController.clear();
-                          textFieldController.reviewController.clear();
-                          textFieldController.dateController.clear();
-                        }
+                    createNewReview();
+                    textFieldController.nameController.clear();
+                    textFieldController.reviewController.clear();
+                    textFieldController.dateController.clear();
+                  }
                       : null,
                   child: Text(
                     AppStrings.addReview,
@@ -112,6 +112,6 @@ class AddReviewFormScreen extends StatelessWidget {
     final review = textFieldController.reviewController.text;
     final date = textFieldController.dateController.text;
 
-    reviewController.createReview(name: name, review: review, date: date);
+    reviewController.createReview(name: name, review: review, date: date, id: restaurantID);
   }
 }

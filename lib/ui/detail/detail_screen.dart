@@ -76,7 +76,7 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                                   '$restaurantCITY',
                                   style: TextStyle(
                                     fontSize:
-                                        displayWidth(context) * FontSize.s005,
+                                    displayWidth(context) * FontSize.s005,
                                     color: Get.isDarkMode
                                         ? CustomColors.DarkOrange
                                         : CustomColors.GreenRyb,
@@ -96,7 +96,7 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                               Constants.ratingDetail,
                               style: TextStyle(
                                   fontSize:
-                                      displayWidth(context) * FontSize.s005,
+                                  displayWidth(context) * FontSize.s005,
                                   color: Get.isDarkMode
                                       ? CustomColors.OrangePeel
                                       : CustomColors.DarkOrange),
@@ -162,7 +162,7 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                                         ? CustomColors.DarkOrange
                                         : CustomColors.Scarlet,
                                     fontSize:
-                                        displayWidth(context) * FontSize.s005,
+                                    displayWidth(context) * FontSize.s005,
                                     fontFamily: Constants.helvetica))),
                       ],
                     ),
@@ -170,7 +170,7 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                       height: 80, // Card height
                       child: PageView.builder(
                         itemCount:
-                            restaurantFood.isEmpty ? 0 : restaurantFood.length,
+                        restaurantFood.isEmpty ? 0 : restaurantFood.length,
                         controller: PageController(viewportFraction: 0.8),
                         onPageChanged: (index) => restaurantFood.length,
                         itemBuilder: (context, index) {
@@ -214,7 +214,7 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                                         ? CustomColors.DarkOrange
                                         : CustomColors.Scarlet,
                                     fontSize:
-                                        displayWidth(context) * FontSize.s005,
+                                    displayWidth(context) * FontSize.s005,
                                     fontFamily: Constants.helvetica))),
                       ],
                     ),
@@ -264,7 +264,8 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
             ? CustomColors.UsafaBlue
             : CustomColors.SpanishViridian,
         onPressed: () {
-          Get.to(AddReviewFormScreen());
+          Get.to(AddReviewFormScreen(restaurantID: restaurantID,));
+          debugPrint('review');
         },
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -284,7 +285,7 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
       children: [
         ClipRRect(
           borderRadius:
-              const BorderRadius.vertical(bottom: Radius.circular(15)),
+          const BorderRadius.vertical(bottom: Radius.circular(15)),
           child: Image.network(
             'https://restaurant-api.dicoding.dev/images/medium/$restaurantPICTUREID',
             fit: BoxFit.cover,
