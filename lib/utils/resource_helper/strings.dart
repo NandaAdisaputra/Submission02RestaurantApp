@@ -8,6 +8,7 @@ class AppStrings {
   static String reviewName = 'name';
   static String reviewDesc = 'review';
   static String reviewDate = 'date';
+  static String idDate = 'id';
 
   // error handler
   static const String strBadRequestError = "bad_request_error";

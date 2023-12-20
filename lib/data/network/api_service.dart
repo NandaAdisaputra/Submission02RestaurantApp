@@ -29,27 +29,34 @@ class ApiServices {
         throw Exception(ErrorHandler.handle(dynamic));
       }
     } catch (e) {
-      throw Exception(ErrorHandler.handle(dynamic) );
+      throw Exception(ErrorHandler.handle(dynamic));
     }
   }
 
-  Future<Review> createReview(
-      {required String name,
+  Future<List<Review>> createReview(
+      {required String id,
+      required String name,
       required String review,
       required String date}) async {
     try {
       final response = await dio.post("/review",
-          data: {'name': name, 'review': review, 'date': date});
+          data: {'id': id, 'name': name, 'review': review, 'date': date});
 
       if (response.statusCode == 201) {
-        final reviewData = response.data as Map<String, dynamic>;
-        final review = Review(
-          id: reviewData['id'],
-          name: reviewData['name'],
-          review: reviewData['review'],
-          date: reviewData['date'],
-        );
-        return review;
+        final reviewData =
+            response.data!['customerReviews'] as List<Map<String, dynamic>>;
+        final reviews = <Review>[];
+        for (var review in reviewData) {
+          reviews.add(
+            Review(
+              id: review['id'],
+              name: review['name'],
+              review: review['review'],
+              date: review['date'],
+            ),
+          );
+        }
+        return reviews;
       } else {
         throw Exception(ErrorHandler.handle(dynamic));
       }
