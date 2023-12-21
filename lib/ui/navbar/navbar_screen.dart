@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconly/iconly.dart';
 import 'package:submission02/ui/home/home_screen.dart';
 import 'package:submission02/ui/navbar/navbar_controller.dart';
 import 'package:submission02/ui/profile/profile_user.dart';
@@ -30,20 +29,21 @@ class _NavBarScreenState extends State<NavBarScreen> {
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
-          selectedItemColor: CustomColors.DarkOrange,
-          unselectedItemColor: CustomColors.OrangePeel,
+          selectedItemColor: CustomColors.Scarlet,
+          unselectedItemColor: CustomColors.DarkOrange,
           currentIndex: controller.tabIndex,
           onTap: controller.changeTabIndex,
-            items: [
-              _bottombarItem(IconlyBold.home,"Home"),
-              _bottombarItem(IconlyBold.search,"Search"),
-              _bottombarItem(IconlyBold.profile,"Profile")
-            ],
+          items: [
+            _bottomBarItem(Icons.home, "Home"),
+            _bottomBarItem(Icons.search, "Search"),
+            _bottomBarItem(Icons.person, "Profile")
+          ],
         ),
       );
     });
   }
 }
-_bottombarItem(IconData icon, String label){
+
+_bottomBarItem(IconData icon, String label) {
   return BottomNavigationBarItem(icon: Icon(icon), label: label);
 }

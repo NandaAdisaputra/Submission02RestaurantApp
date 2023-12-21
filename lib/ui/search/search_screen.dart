@@ -15,6 +15,7 @@ var searchRestaurant = Get.put(SearchRestaurantController());
 
 class SearchRestaurantScreen extends GetView<SearchRestaurantController> {
   const SearchRestaurantScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +37,7 @@ class SearchRestaurantScreen extends GetView<SearchRestaurantController> {
                     child: Text(
                       Constants.searchTitle,
                       style: TextStyle(
-                          color: Get.isDarkMode
+                          color: Theme.of(context).brightness == Brightness.dark
                               ? CustomColors.White
                               : CustomColors.DarkOrange,
                           fontSize: displayWidth(context) * 0.08,
@@ -47,7 +48,7 @@ class SearchRestaurantScreen extends GetView<SearchRestaurantController> {
                     child: Text(
                       Constants.searchRestaurantYourLikes,
                       style: TextStyle(
-                          color: Get.isDarkMode
+                          color: Theme.of(context).brightness == Brightness.dark
                               ? CustomColors.White
                               : CustomColors.DarkOrange,
                           fontSize: displayWidth(context) * 0.05),
@@ -62,7 +63,7 @@ class SearchRestaurantScreen extends GetView<SearchRestaurantController> {
                         border: OutlineInputBorder(),
                         prefixIcon: Icon(
                           Icons.search,
-                          color: Get.isDarkMode
+                          color: Theme.of(context).brightness == Brightness.dark
                               ? CustomColors.White
                               : CustomColors.DarkOrange,
                         ),
@@ -120,7 +121,9 @@ class SearchRestaurantScreen extends GetView<SearchRestaurantController> {
                                                   right: 8,
                                                   top: 4,
                                                   bottom: 12),
-                                              color: Get.isDarkMode
+                                              color: Theme.of(context)
+                                                          .brightness ==
+                                                      Brightness.dark
                                                   ? CustomColors.Jet
                                                   : CustomColors.Lavender,
                                               elevation: 8,
@@ -151,7 +154,10 @@ class SearchRestaurantScreen extends GetView<SearchRestaurantController> {
                                                   Container(
                                                       height: 50,
                                                       child: VerticalDivider(
-                                                          color: Get.isDarkMode
+                                                          color: Theme.of(context)
+                                                                      .brightness ==
+                                                                  Brightness
+                                                                      .dark
                                                               ? CustomColors
                                                                   .DarkOrange
                                                               : CustomColors
@@ -170,8 +176,9 @@ class SearchRestaurantScreen extends GetView<SearchRestaurantController> {
                                                                 data[Constants
                                                                     .name],
                                                                 style: TextStyle(
-                                                                    color: Get
-                                                                            .isDarkMode
+                                                                    color: Theme.of(context).brightness ==
+                                                                            Brightness
+                                                                                .dark
                                                                         ? CustomColors
                                                                             .OrangePeel
                                                                         : CustomColors
@@ -194,8 +201,10 @@ class SearchRestaurantScreen extends GetView<SearchRestaurantController> {
                                                               Icon(
                                                                   Icons
                                                                       .location_on_outlined,
-                                                                  color: Get
-                                                                          .isDarkMode
+                                                                  color: Theme.of(context)
+                                                                              .brightness ==
+                                                                          Brightness
+                                                                              .dark
                                                                       ? CustomColors
                                                                           .GreenRyb
                                                                       : CustomColors
@@ -210,8 +219,10 @@ class SearchRestaurantScreen extends GetView<SearchRestaurantController> {
                                                                             context) *
                                                                         FontSize
                                                                             .s0045,
-                                                                    color: Get
-                                                                            .isDarkMode
+                                                                    color: Theme.of(context)
+                                                                                .brightness ==
+                                                                            Brightness
+                                                                                .dark
                                                                         ? CustomColors
                                                                             .GreenRyb
                                                                         : CustomColors
@@ -250,8 +261,10 @@ class SearchRestaurantScreen extends GetView<SearchRestaurantController> {
                                                                             _) =>
                                                                         Icon(
                                                                   Icons.star,
-                                                                  color: Get
-                                                                          .isDarkMode
+                                                                  color: Theme.of(context)
+                                                                              .brightness ==
+                                                                          Brightness
+                                                                              .dark
                                                                       ? CustomColors
                                                                           .Gold
                                                                       : CustomColors
@@ -304,7 +317,7 @@ class SearchRestaurantScreen extends GetView<SearchRestaurantController> {
                         ),
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

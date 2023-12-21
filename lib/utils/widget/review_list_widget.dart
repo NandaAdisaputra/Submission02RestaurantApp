@@ -27,14 +27,14 @@ class ReviewListWidget extends StatelessWidget {
             return ListTile(
               title: Text(review.name,
                   style: TextStyle(
-                      color: Get.isDarkMode
+                      color: Theme.of(context).brightness == Brightness.dark
                           ? CustomColors.White
                           : CustomColors.DarkOrange,
                       fontSize: displayWidth(context) * FontSize.s0045,
                       fontWeight: FontWeight.normal)),
               subtitle: Text(review.review,
                   style: TextStyle(
-                      color: Get.isDarkMode
+                      color: Theme.of(context).brightness == Brightness.dark
                           ? CustomColors.White
                           : CustomColors.DarkOrange,
                       fontSize: displayWidth(context) * FontSize.s0045,

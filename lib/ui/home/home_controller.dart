@@ -1,39 +1,62 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:submission02/ui/themes/theme_controller.dart';
 
-class HomeController extends GetxController {
+class HomeController extends GetxController
+    with GetSingleTickerProviderStateMixin {
+  final ThemeController _themeController = Get.find<ThemeController>();
   final count = 0.obs;
-  var isDark = false;
+  Rx<String> currentModeName = ''.obs;
+
+  RxBool isDarkMode = false.obs;
+  late Color textColor;
+  double fontSize = 20;
+  late AnimationController animationController;
 
   @override
   void onInit() {
+    isDarkMode.value = _themeController.isDarkTheme;
+    currentModeName.value = _themeController.isDarkTheme ? 'Dark' : 'Light';
+
+    animationController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 430));
+    animationController.reset();
+    textColor = isDarkMode.value ? Colors.white : Colors.red;
+    fontSize = isDarkMode.value ? 30 : 20;
+
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  void changeAppTheme() => _changeTheme();
+
+  bool toggleTheme() {
+    _changeTheme();
+    return isDarkMode.value;
+  }
+
+  void _animate() {
+    if (isDarkMode.value) {
+      fontSize = 30;
+      textColor = Colors.white;
+      animationController.reverse();
+    } else {
+      fontSize = 20;
+      textColor = Colors.red;
+      animationController.forward();
+    }
+  }
+
+  void _changeTheme() {
+    _themeController.changeTheme(
+      isDarkMode: isDarkMode,
+      modeName: currentModeName,
+    );
+    _animate();
   }
 
   @override
   void onClose() {
+    animationController.dispose();
     super.onClose();
-  }
-
-  void increment() {
-    count.value++;
-    update();
-  }
-
-  void changeTheme(state) {
-    if (state == true) {
-      isDark = true;
-      Get.changeTheme(ThemeData.dark());
-    } else {
-      isDark = !isDark;
-      isDark = false;
-      Get.changeTheme(ThemeData.light());
-    }
-    update();
   }
 }

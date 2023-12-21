@@ -28,7 +28,7 @@ class FutureBuilderRestaurant extends GetView<ListRestaurantController> {
             itemCount: listRestaurants.listBodyRestaurants.length,
             itemBuilder: (context, index) {
               var data = listRestaurants.listBodyRestaurants[index];
-             print("Datanya: $data");
+              print("Datanya: $data");
               var listFoods =
                   detailController.listBodyRestaurantsMenusFoods.map((e) {
                 return e;
@@ -88,7 +88,8 @@ class FutureBuilderRestaurant extends GetView<ListRestaurantController> {
                         Container(
                             height: 50,
                             child: VerticalDivider(
-                                color: Get.isDarkMode
+                                color: Theme.of(context).brightness ==
+                                        Brightness.dark
                                     ? CustomColors.DarkOrange
                                     : CustomColors.Scarlet)),
                         Flexible(
@@ -102,7 +103,8 @@ class FutureBuilderRestaurant extends GetView<ListRestaurantController> {
                                     Text(
                                       data[Constants.name],
                                       style: TextStyle(
-                                          color: Get.isDarkMode
+                                          color: Theme.of(context).brightness ==
+                                                  Brightness.dark
                                               ? CustomColors.OrangePeel
                                               : CustomColors.DarkOrange,
                                           fontSize: displayWidth(context) *
@@ -115,7 +117,8 @@ class FutureBuilderRestaurant extends GetView<ListRestaurantController> {
                                 Row(
                                   children: [
                                     Icon(Icons.location_on_outlined,
-                                        color: Get.isDarkMode
+                                        color: Theme.of(context).brightness ==
+                                                Brightness.dark
                                             ? CustomColors.GreenRyb
                                             : CustomColors.Scarlet),
                                     AppSizes.wSizeBox8,
@@ -124,7 +127,8 @@ class FutureBuilderRestaurant extends GetView<ListRestaurantController> {
                                       style: TextStyle(
                                           fontSize: displayWidth(context) *
                                               FontSize.s0045,
-                                          color: Get.isDarkMode
+                                          color: Theme.of(context).brightness ==
+                                                  Brightness.dark
                                               ? CustomColors.GreenRyb
                                               : CustomColors.Scarlet),
                                     ),
@@ -147,11 +151,12 @@ class FutureBuilderRestaurant extends GetView<ListRestaurantController> {
                                       itemPadding:
                                           EdgeInsets.symmetric(horizontal: 4.0),
                                       itemBuilder: (context, _) => Icon(
-                                        Icons.star,
-                                        color: Get.isDarkMode
-                                            ? CustomColors.Gold
-                                            : CustomColors.DarkCornflowerBlue,
-                                      ),
+                                          Icons.star,
+                                          color: Theme.of(context).brightness ==
+                                                  Brightness.dark
+                                              ? CustomColors.Gold
+                                              : CustomColors
+                                                  .DarkCornflowerBlue),
                                       onRatingUpdate: (rating) {},
                                     ),
                                     AppSizes.wSizeBox50

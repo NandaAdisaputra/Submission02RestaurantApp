@@ -11,7 +11,6 @@ var listController = Get.put(ListRestaurantController());
 
 class ListRestaurantScreen extends GetView<ListRestaurantController> {
   const ListRestaurantScreen({Key? key}) : super(key: key);
-  static const String listTitle= 'List Restaurant';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,14 +21,14 @@ class ListRestaurantScreen extends GetView<ListRestaurantController> {
             Container(
               margin: EdgeInsets.only(left: 8, right: 8, top: 8),
               child: Container(
-                color: Get.isDarkMode
+                color: Theme.of(context).brightness==Brightness.dark
                     ? CustomColors.Jet
                     : CustomColors.SelectiveYellow,
                 child: Center(
                   child: Text(
                     Constants.title,
                     style: TextStyle(
-                        color: Get.isDarkMode
+                        color: Theme.of(context).brightness==Brightness.dark
                             ? CustomColors.White
                             : CustomColors.Scarlet,
                         fontSize: displayWidth(context) * FontSize.s008,
@@ -42,14 +41,14 @@ class ListRestaurantScreen extends GetView<ListRestaurantController> {
                 margin: EdgeInsets.only(left: 16, right: 16),
                 height: 30,
                 child: Divider(
-                    color: Get.isDarkMode
+                    color: Theme.of(context).brightness==Brightness.dark
                         ? CustomColors.MiddleYellow
                         : CustomColors.Scarlet)),
             Center(
               child: Text(
                 Constants.subTitle,
                 style: TextStyle(
-                    color: Get.isDarkMode
+                    color: Theme.of(context).brightness==Brightness.dark
                         ? CustomColors.MiddleYellow
                         : CustomColors.Scarlet,
                     fontSize: displayWidth(context) * FontSize.s0045,

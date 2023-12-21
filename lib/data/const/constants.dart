@@ -3,6 +3,7 @@ class Constants {
   static const String title = "Restaurant";
   static const String subTitle = "Recommendation restaurant for you!";
   static const String search = "Cari Restaurant";
+  static const String setting = "Setting";
   static const String name = "name";
   static const String rating = "rating";
   static const String ratingDetail = "Rating :";
@@ -13,6 +14,8 @@ class Constants {
   static const String restaurants = "restaurants";
   static const String menus = "menus";
   static const String foods = "foods";
+  static const String lightTheme = "Light Theme";
+  static const String darkTheme = "Dark Theme";
   static const String drinks = "drinks";
   static const String noDataYet = "Belum Ada Restoran yang Anda Cari";
   static const String inputData = "Masukkan Nama Restorant";

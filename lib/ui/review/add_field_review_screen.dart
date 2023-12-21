@@ -10,8 +10,9 @@ import 'text_field_controller.dart';
 class AddReviewFormScreen extends StatelessWidget {
   final ReviewController reviewController = Get.find();
   final TextFieldController textFieldController =
-  Get.put(TextFieldController());
+      Get.put(TextFieldController());
   final String? restaurantID;
+
   AddReviewFormScreen({super.key, this.restaurantID});
 
   @override
@@ -21,8 +22,9 @@ class AddReviewFormScreen extends StatelessWidget {
         title: Text(AppStrings.addReview,
             style: TextStyle(
                 color: Colors.white, fontFamily: Constants.helvetica)),
-        backgroundColor:
-        Get.isDarkMode ? CustomColors.Jet : CustomColors.DarkOrange,
+        backgroundColor: Theme.of(context).brightness == Brightness.dark
+            ? CustomColors.Jet
+            : CustomColors.DarkOrange,
       ),
       body: Column(
         children: [
@@ -34,7 +36,7 @@ class AddReviewFormScreen extends StatelessWidget {
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(
                     Icons.person,
-                    color: Get.isDarkMode
+                    color: Theme.of(context).brightness == Brightness.dark
                         ? CustomColors.White
                         : CustomColors.DarkOrange,
                   ),
@@ -50,7 +52,7 @@ class AddReviewFormScreen extends StatelessWidget {
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(
                     Icons.description,
-                    color: Get.isDarkMode
+                    color: Theme.of(context).brightness == Brightness.dark
                         ? CustomColors.White
                         : CustomColors.DarkOrange,
                   ),
@@ -66,7 +68,7 @@ class AddReviewFormScreen extends StatelessWidget {
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(
                     Icons.date_range,
-                    color: Get.isDarkMode
+                    color: Theme.of(context).brightness == Brightness.dark
                         ? CustomColors.White
                         : CustomColors.DarkOrange,
                   ),
@@ -81,21 +83,22 @@ class AddReviewFormScreen extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Get.isDarkMode
-                          ? CustomColors.Jet
-                          : CustomColors.DarkOrange),
+                      backgroundColor:
+                          Theme.of(context).brightness == Brightness.dark
+                              ? CustomColors.Jet
+                              : CustomColors.DarkOrange),
                   onPressed: textFieldController.isButtonEnabled.value
                       ? () {
-                    createNewReview();
-                    textFieldController.nameController.clear();
-                    textFieldController.reviewController.clear();
-                    textFieldController.dateController.clear();
-                  }
+                          createNewReview();
+                          textFieldController.nameController.clear();
+                          textFieldController.reviewController.clear();
+                          textFieldController.dateController.clear();
+                        }
                       : null,
                   child: Text(
                     AppStrings.addReview,
                     style: TextStyle(
-                        color: Get.isDarkMode
+                        color: Theme.of(context).brightness == Brightness.dark
                             ? CustomColors.White
                             : CustomColors.DarkOrange,
                         fontFamily: Constants.helvetica),
@@ -112,6 +115,7 @@ class AddReviewFormScreen extends StatelessWidget {
     final review = textFieldController.reviewController.text;
     final date = textFieldController.dateController.text;
 
-    reviewController.createReview(name: name, review: review, date: date, id: restaurantID);
+    reviewController.createReview(
+        name: name, review: review, date: date, id: restaurantID);
   }
 }

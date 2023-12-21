@@ -19,8 +19,6 @@ class ProfileUserScreen extends GetView<ProfileUserController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor:
-            Get.isDarkMode ? CustomColors.Jet : CustomColors.DarkOrange,
         elevation: 0,
         leading: Padding(
           padding: const EdgeInsets.all(12),
@@ -32,8 +30,9 @@ class ProfileUserScreen extends GetView<ProfileUserController> {
             child: Tooltip(
               message: Constants.search,
               child: Material(
-                color:
-                    Get.isDarkMode ? CustomColors.Jet : CustomColors.DarkOrange,
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? CustomColors.Jet
+                    : CustomColors.DarkOrange,
                 child: InkWell(
                   onTap: () => Get.to(
                     const SearchRestaurantScreen(),
@@ -59,17 +58,14 @@ class ProfileUserScreen extends GetView<ProfileUserController> {
               child: Container(
                 width: double.infinity,
                 height: double.infinity,
-                color: Get.isDarkMode
-                    ? CustomColors.EerieBlack
-                    : CustomColors.OrangePeel,
                 alignment: Alignment.centerLeft,
                 padding: EdgeInsets.symmetric(horizontal: 8),
                 child: Text(
                   Constants.detailProfile,
                   style: TextStyle(
-                      color: Get.isDarkMode
+                      color: Theme.of(context).brightness == Brightness.dark
                           ? CustomColors.White
-                          : CustomColors.White,
+                          : CustomColors.DarkOrange,
                       fontFamily: Constants.helvetica,
                       fontSize: displayWidth(context) * FontSize.s005),
                 ),
@@ -117,9 +113,10 @@ class ProfileUserScreen extends GetView<ProfileUserController> {
               margin: EdgeInsets.all(8),
               child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Get.isDarkMode
-                          ? CustomColors.Jet
-                          : CustomColors.DarkOrange),
+                      backgroundColor:
+                          Theme.of(context).brightness == Brightness.dark
+                              ? CustomColors.Jet
+                              : CustomColors.DarkOrange),
                   onPressed: () {
                     launchUrlStart(
                         url: "https://www.linkedin.com/in/nandaadisaputra/");
@@ -127,7 +124,7 @@ class ProfileUserScreen extends GetView<ProfileUserController> {
                   child: Text(
                     Constants.visitLinkedin,
                     style: TextStyle(
-                        color: Get.isDarkMode
+                        color: Theme.of(context).brightness == Brightness.dark
                             ? CustomColors.White
                             : CustomColors.White,
                         fontFamily: Constants.helvetica,
@@ -137,71 +134,6 @@ class ProfileUserScreen extends GetView<ProfileUserController> {
           )
         ],
       ),
-      // bottomNavigationBar: BottomAppBar(
-      //   color:
-      //       Get.isDarkMode ? CustomColors.EerieBlack : CustomColors.DarkOrange,
-      //   elevation: 20.0,
-      //   child: Row(
-      //     children: [
-      //       Expanded(
-      //         child: SizedBox(
-      //           height: 60.0,
-      //           child: InkWell(
-      //             onTap: () => Get.to(
-      //               const HomeScreen(),
-      //             ),
-      //             child: Column(
-      //               mainAxisAlignment: MainAxisAlignment.center,
-      //               children: [
-      //                 Icon(Icons.home, color: Colors.white),
-      //                 Text(Constants.home,
-      //                     style: TextStyle(color: Colors.white)),
-      //               ],
-      //             ),
-      //           ),
-      //         ),
-      //       ),
-      //       Expanded(
-      //         child: SizedBox(
-      //           height: 60.0,
-      //           child: InkWell(
-      //             onTap: () => Get.to(
-      //               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-      //                 content: Text("Under Development"),
-      //               )),
-      //             ),
-      //             child: Column(
-      //               mainAxisAlignment: MainAxisAlignment.center,
-      //               children: [
-      //                 Icon(Icons.favorite, color: Colors.white),
-      //                 Text(Constants.addFavorite,
-      //                     style: TextStyle(color: Colors.white)),
-      //               ],
-      //             ),
-      //           ),
-      //         ),
-      //       ),
-      //       Expanded(
-      //         child: SizedBox(
-      //           height: 60.0,
-      //           child: InkWell(
-      //             onTap: () => Get.to(
-      //               const ProfileUserScreen(),
-      //             ),
-      //             child: Column(
-      //               mainAxisAlignment: MainAxisAlignment.center,
-      //               children: [
-      //                 Icon(Icons.person, color: Colors.white),
-      //                 Text(Constants.profileUsers,
-      //                     style: TextStyle(color: Colors.white)),
-      //               ],
-      //             ),
-      //           ),
-      //         ),
-      //       )
-      //     ],
-      //   ),
-      // ),
     );
   }
 

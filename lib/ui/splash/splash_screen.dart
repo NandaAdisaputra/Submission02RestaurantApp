@@ -13,8 +13,9 @@ class SplashScreen extends GetView<SplashController> {
   Widget build(BuildContext context) {
     Get.put(SplashController());
     return Scaffold(
-      backgroundColor:
-          Get.isDarkMode ? CustomColors.Jet : CustomColors.DarkOrange,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark
+          ? CustomColors.Jet
+          : CustomColors.DarkOrange,
       body: Center(
         child: Lottie.asset(JsonAssets.splash),
       ),
