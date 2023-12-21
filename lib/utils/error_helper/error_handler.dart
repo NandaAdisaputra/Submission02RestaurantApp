@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:submission02/utils/network_helper/failure.dart';
-import '../network_helper/app.dart';
 import '../resource_helper/strings.dart';
 
 class ErrorHandler implements Exception {
@@ -58,7 +57,6 @@ enum DataSource {
 
 extension DataSourceExtension on DataSource {
   Failure getFailure() {
-    var mContext = navigatorKey!.currentState!.context;
     switch (this) {
       case DataSource.SUCCESS:
         return Failure(ResponseCode.SUCCESS, ResponseMessage.SUCCESS);

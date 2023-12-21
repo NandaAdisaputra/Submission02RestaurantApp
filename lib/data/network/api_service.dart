@@ -13,10 +13,8 @@ class ApiServices {
   Future<List<Review>> fetchReview(String endPoint) async {
     try {
       final response = await dio.get(endPoint);
-      print(response.statusCode);
       if (response.statusCode == 200) {
         final data = response.data as List<dynamic>;
-        print(data);
         List<Review> reviews = data.map((reviewsData) {
           return Review(
               id: reviewsData['id'],

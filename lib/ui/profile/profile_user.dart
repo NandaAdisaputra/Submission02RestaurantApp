@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:submission02/data/base/components/sliver_delegate.dart';
 import 'package:submission02/data/const/constants.dart';
-import 'package:submission02/ui/home/home_screen.dart';
 import 'package:submission02/ui/profile/profile_user_controller.dart';
 import 'package:submission02/ui/search/search_screen.dart';
 import 'package:submission02/utils/resource_helper/assets.dart';
@@ -138,71 +137,71 @@ class ProfileUserScreen extends GetView<ProfileUserController> {
           )
         ],
       ),
-      bottomNavigationBar: BottomAppBar(
-        color:
-            Get.isDarkMode ? CustomColors.EerieBlack : CustomColors.DarkOrange,
-        elevation: 20.0,
-        child: Row(
-          children: [
-            Expanded(
-              child: SizedBox(
-                height: 60.0,
-                child: InkWell(
-                  onTap: () => Get.to(
-                    const HomeScreen(),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.home, color: Colors.white),
-                      Text(Constants.home,
-                          style: TextStyle(color: Colors.white)),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-              child: SizedBox(
-                height: 60.0,
-                child: InkWell(
-                  onTap: () => Get.to(
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      content: Text("Under Development"),
-                    )),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.favorite, color: Colors.white),
-                      Text(Constants.addFavorite,
-                          style: TextStyle(color: Colors.white)),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-              child: SizedBox(
-                height: 60.0,
-                child: InkWell(
-                  onTap: () => Get.to(
-                    const ProfileUserScreen(),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.person, color: Colors.white),
-                      Text(Constants.profileUsers,
-                          style: TextStyle(color: Colors.white)),
-                    ],
-                  ),
-                ),
-              ),
-            )
-          ],
-        ),
-      ),
+      // bottomNavigationBar: BottomAppBar(
+      //   color:
+      //       Get.isDarkMode ? CustomColors.EerieBlack : CustomColors.DarkOrange,
+      //   elevation: 20.0,
+      //   child: Row(
+      //     children: [
+      //       Expanded(
+      //         child: SizedBox(
+      //           height: 60.0,
+      //           child: InkWell(
+      //             onTap: () => Get.to(
+      //               const HomeScreen(),
+      //             ),
+      //             child: Column(
+      //               mainAxisAlignment: MainAxisAlignment.center,
+      //               children: [
+      //                 Icon(Icons.home, color: Colors.white),
+      //                 Text(Constants.home,
+      //                     style: TextStyle(color: Colors.white)),
+      //               ],
+      //             ),
+      //           ),
+      //         ),
+      //       ),
+      //       Expanded(
+      //         child: SizedBox(
+      //           height: 60.0,
+      //           child: InkWell(
+      //             onTap: () => Get.to(
+      //               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+      //                 content: Text("Under Development"),
+      //               )),
+      //             ),
+      //             child: Column(
+      //               mainAxisAlignment: MainAxisAlignment.center,
+      //               children: [
+      //                 Icon(Icons.favorite, color: Colors.white),
+      //                 Text(Constants.addFavorite,
+      //                     style: TextStyle(color: Colors.white)),
+      //               ],
+      //             ),
+      //           ),
+      //         ),
+      //       ),
+      //       Expanded(
+      //         child: SizedBox(
+      //           height: 60.0,
+      //           child: InkWell(
+      //             onTap: () => Get.to(
+      //               const ProfileUserScreen(),
+      //             ),
+      //             child: Column(
+      //               mainAxisAlignment: MainAxisAlignment.center,
+      //               children: [
+      //                 Icon(Icons.person, color: Colors.white),
+      //                 Text(Constants.profileUsers,
+      //                     style: TextStyle(color: Colors.white)),
+      //               ],
+      //             ),
+      //           ),
+      //         ),
+      //       )
+      //     ],
+      //   ),
+      // ),
     );
   }
 

@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:submission02/data/const/constants.dart';
 import 'package:submission02/ui/home/home_controller.dart';
 import 'package:submission02/ui/list/list_restaurant_screen.dart';
-import 'package:submission02/ui/profile/profile_user.dart';
 import 'package:submission02/ui/search/search_screen.dart';
 import 'package:submission02/utils/resource_helper/assets.dart';
 import 'package:submission02/utils/resource_helper/colors.dart';
@@ -80,7 +79,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor:
-            Get.isDarkMode ? CustomColors.Jet : CustomColors.DarkOrange,
+        Get.isDarkMode ? CustomColors.Jet : CustomColors.DarkOrange,
         elevation: 0,
         leading: Padding(
           padding: const EdgeInsets.all(12),
@@ -93,7 +92,7 @@ class _HomePageState extends State<HomePage> {
               message: Constants.search,
               child: Material(
                 color:
-                    Get.isDarkMode ? CustomColors.Jet : CustomColors.DarkOrange,
+                Get.isDarkMode ? CustomColors.Jet : CustomColors.DarkOrange,
                 child: InkWell(
                   onTap: () => Get.to(
                     const SearchRestaurantScreen(),
@@ -119,69 +118,69 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
-      body: const ListRestaurantScreen(),
-      bottomNavigationBar: BottomAppBar(
-        color: Get.isDarkMode ? CustomColors.EerieBlack : Colors.orange,
-        elevation: 20.0,
-        child: Row(
-          children: [
-            Expanded(
-              child: SizedBox(
-                height: 60.0,
-                child: InkWell(
-                  onTap: () {},
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.home, color: Colors.white),
-                      Text(Constants.home,
-                          style: TextStyle(color: Colors.white)),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-              child: SizedBox(
-                height: 60.0,
-                child: InkWell(
-                  onTap: () => Get.to(
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      content: Text("Under Development"),
-                    )),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.favorite, color: Colors.white),
-                      Text(Constants.addFavorite,
-                          style: TextStyle(color: Colors.white)),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-              child: SizedBox(
-                height: 60.0,
-                child: InkWell(
-                  onTap: () => Get.to(
-                    const ProfileUserScreen(),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.person, color: Colors.white),
-                      Text(Constants.profileUsers,
-                          style: TextStyle(color: Colors.white)),
-                    ],
-                  ),
-                ),
-              ),
-            )
-          ],
-        ),
-      ),
+      body: ListRestaurantScreen()
+      // bottomNavigationBar: BottomAppBar(
+      //   color: Get.isDarkMode ? CustomColors.EerieBlack : Colors.orange,
+      //   elevation: 20.0,
+      //   child: Row(
+      //     children: [
+      //       Expanded(
+      //         child: SizedBox(
+      //           height: 60.0,
+      //           child: InkWell(
+      //             onTap: () {},
+      //             child: Column(
+      //               mainAxisAlignment: MainAxisAlignment.center,
+      //               children: [
+      //                 Icon(Icons.home, color: Colors.white),
+      //                 Text(Constants.home,
+      //                     style: TextStyle(color: Colors.white)),
+      //               ],
+      //             ),
+      //           ),
+      //         ),
+      //       ),
+      //       Expanded(
+      //         child: SizedBox(
+      //           height: 60.0,
+      //           child: InkWell(
+      //             onTap: () => Get.to(
+      //               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+      //                 content: Text("Under Development"),
+      //               )),
+      //             ),
+      //             child: Column(
+      //               mainAxisAlignment: MainAxisAlignment.center,
+      //               children: [
+      //                 Icon(Icons.favorite, color: Colors.white),
+      //                 Text(Constants.addFavorite,
+      //                     style: TextStyle(color: Colors.white)),
+      //               ],
+      //             ),
+      //           ),
+      //         ),
+      //       ),
+      //       Expanded(
+      //         child: SizedBox(
+      //           height: 60.0,
+      //           child: InkWell(
+      //             onTap: () => Get.to(
+      //               const ProfileUserScreen(),
+      //             ),
+      //             child: Column(
+      //               mainAxisAlignment: MainAxisAlignment.center,
+      //               children: [
+      //                 Icon(Icons.person, color: Colors.white),
+      //                 Text(Constants.profileUsers,
+      //                     style: TextStyle(color: Colors.white)),
+      //               ],
+      //             ),
+      //           ),
+      //         ),
+      //       )
+      //     ],
+      //   ),
+      // ),
     );
   }
 }

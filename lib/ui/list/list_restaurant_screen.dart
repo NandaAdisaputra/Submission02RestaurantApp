@@ -11,7 +11,7 @@ var listController = Get.put(ListRestaurantController());
 
 class ListRestaurantScreen extends GetView<ListRestaurantController> {
   const ListRestaurantScreen({Key? key}) : super(key: key);
-
+  static const String listTitle= 'List Restaurant';
   @override
   Widget build(BuildContext context) {
     return Scaffold(

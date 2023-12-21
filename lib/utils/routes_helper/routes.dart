@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:submission02/ui/home/home_screen.dart';
 import 'package:submission02/ui/list/list_restaurant_screen.dart';
+import 'package:submission02/ui/navbar/navbar_screen.dart';
 import 'package:submission02/ui/review/add_field_review_screen.dart';
 import 'package:submission02/ui/search/search_screen.dart';
 import 'package:submission02/ui/splash/splash_screen.dart';
@@ -12,6 +13,7 @@ class Routes {
   static const String listRoute = "/list";
   static const String searchRoute = "/search";
   static const String reviewRoute = "/review";
+  static const String navbarRoute = "/navbar";
 }
 
 class RouteGenerator {
@@ -27,6 +29,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => SearchRestaurantScreen());
       case Routes.reviewRoute:
         return MaterialPageRoute(builder: (_) => AddReviewFormScreen());
+      case Routes.navbarRoute:
+        return MaterialPageRoute(builder: (_) => NavBarScreen());
       default:
         return unDefinedRoute();
     }

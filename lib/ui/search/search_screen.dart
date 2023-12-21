@@ -15,7 +15,6 @@ var searchRestaurant = Get.put(SearchRestaurantController());
 
 class SearchRestaurantScreen extends GetView<SearchRestaurantController> {
   const SearchRestaurantScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -28,7 +28,7 @@ class FutureBuilderRestaurant extends GetView<ListRestaurantController> {
             itemCount: listRestaurants.listBodyRestaurants.length,
             itemBuilder: (context, index) {
               var data = listRestaurants.listBodyRestaurants[index];
-
+             print("Datanya: $data");
               var listFoods =
                   detailController.listBodyRestaurantsMenusFoods.map((e) {
                 return e;
@@ -41,7 +41,9 @@ class FutureBuilderRestaurant extends GetView<ListRestaurantController> {
                   return e;
                 },
               ).toList();
+              print("list Food: $listFoods");
               listRestaurants.drinks = listDrinks;
+              print("list Drink: $listDrinks");
               if (snapshot.hasData) {
                 return InkWell(
                   onTap: () {
@@ -164,7 +166,6 @@ class FutureBuilderRestaurant extends GetView<ListRestaurantController> {
                   ),
                 );
               } else {
-                getShimmerLoading();
                 return const CircularProgressIndicator(
                   value: 0.3,
                   strokeWidth: 0.008,
@@ -178,47 +179,4 @@ class FutureBuilderRestaurant extends GetView<ListRestaurantController> {
       ),
     );
   }
-}
-
-Shimmer getShimmerLoading() {
-  return Shimmer.fromColors(
-    baseColor: Colors.grey[300]!,
-    highlightColor: Colors.grey[100]!,
-    child: Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          height: 100,
-          width: 100,
-          color: Colors.white,
-        ),
-        const SizedBox(
-          width: 10,
-        ),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              const SizedBox(
-                height: 10,
-              ),
-              Container(
-                width: double.infinity,
-                height: 18.0,
-                color: Colors.white,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Container(
-                width: double.infinity,
-                height: 14.0,
-                color: Colors.white,
-              ),
-            ],
-          ),
-        ),
-      ],
-    ),
-  );
 }

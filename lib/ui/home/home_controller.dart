@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  var count = 0;
+  final count = 0.obs;
   var isDark = false;
 
   @override
@@ -21,7 +21,7 @@ class HomeController extends GetxController {
   }
 
   void increment() {
-    count;
+    count.value++;
     update();
   }
 

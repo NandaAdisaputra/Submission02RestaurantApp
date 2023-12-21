@@ -8,10 +8,10 @@ void main() {
   runApp(
     GetMaterialApp(
       title: Constants.title,
-      initialRoute: AppPages.INITIAL,
+      initialRoute: AppPages.NAVBAR,
       getPages: AppPages.routes,
       themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
     ),
   );
-}
+  }

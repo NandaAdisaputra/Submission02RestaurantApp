@@ -27,7 +27,6 @@ class ListRestaurantController extends GetxController {
         throw Exception(ErrorHandler.handle(dynamic));
       }
     } catch (e) {
-      isDataLoading(false);
       rethrow;
     } finally {
       isDataLoading(false);

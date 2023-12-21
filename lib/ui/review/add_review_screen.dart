@@ -6,7 +6,7 @@ import '../../utils/resource_helper/strings.dart';
 
 var reviewRestaurantController = Get.put(ReviewController());
 
-// ignore: must_be_immutable
+// ignore: must_be_immutableZ
 class AddReviewScreen extends StatelessWidget {
   TextEditingController nameController = TextEditingController();
   TextEditingController reviewController = TextEditingController();

@@ -7,8 +7,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:submission02/main.dart';
 import 'package:submission02/utils/network_helper/app.dart';
 
 void main() {

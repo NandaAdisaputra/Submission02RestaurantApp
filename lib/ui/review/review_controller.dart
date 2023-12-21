@@ -24,12 +24,12 @@ class ReviewController extends GetxController {
 
   Future<void> createReview(
       {required String? id,
-        required String name,
+      required String name,
       required String review,
       required String date}) async {
     try {
       final newReview = await apiServices.createReview(
-          id:id, name: name, review: review, date: date);
+          id: id, name: name, review: review, date: date);
       reviews.add(newReview as Review);
       Get.snackbar(
         'Success',
