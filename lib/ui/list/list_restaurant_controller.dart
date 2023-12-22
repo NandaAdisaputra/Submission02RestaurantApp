@@ -34,6 +34,7 @@ class ListRestaurantController extends GetxController {
       isDataLoading(false);
       rethrow;
     } finally {
+
     }
   }
 }

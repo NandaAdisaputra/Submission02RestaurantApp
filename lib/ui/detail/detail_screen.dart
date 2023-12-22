@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:submission02/data/const/constants.dart';
 import 'package:submission02/ui/detail/detail_controller.dart';
 import 'package:submission02/ui/list/future_builder_list_screen.dart';
@@ -22,7 +23,8 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
     required this.restaurantFood,
     required this.restaurantDrink,
   }) : super(key: key);
-  final reviewController = detailController.reviewController ;
+  final reviewController = detailController.reviewController;
+
   final String? restaurantID;
   final String? restaurantPICTUREID;
   final String? restaurantNAME;
@@ -31,11 +33,15 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
   final String? restaurantDESCRIPTION;
   final List restaurantFood;
   final List restaurantDrink;
+  var _refreshIndicatorKey = GlobalKey<RefreshIndicatorState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
+      body: LiquidPullToRefresh(
+        key: _refreshIndicatorKey,
+        onRefresh: _handleRefresh,
+        showChildOpacityTransition: false,
         child: SizedBox(
           height: Get.height,
           child: ListView(children: [
@@ -358,5 +364,10 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
         ),
       ],
     );
+  }
+
+  Future<void> _handleRefresh() async {
+    _refreshIndicatorKey.currentState?.show(atTop: false);
+    await Future.delayed(Duration(seconds: 2));
   }
 }

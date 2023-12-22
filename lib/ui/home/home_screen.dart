@@ -59,8 +59,12 @@ class HomeScreen extends GetView<HomeController> {
                       child: Column(
                         children: [
                           ListTile(
-                            leading: Icon(Icons.light_mode),
-                            title: Text(Constants.darkTheme),
+                            leading: Icon(Get.isDarkMode
+                                ? Icons.light_mode
+                                : Icons.dark_mode),
+                            title: Text(Get.isDarkMode
+                                ? Constants.lightMode
+                                : Constants.darkMode),
                             onTap: () {
                               homeController.changeAppTheme();
                               Get.back();

@@ -10,6 +10,8 @@ class Constants {
   static const String city = "city";
   static const String image = "pictureId";
   static const String id = "id";
+  static const String lightMode = "Change to Light Mode";
+  static const String darkMode = "Change to Dark Mode";
   static const String description = "description";
   static const String restaurants = "restaurants";
   static const String menus = "menus";
