@@ -92,6 +92,7 @@ class SnackbarToastUtil {
     TextStyle? middleTextStyle,
     double radius = 20.0,
     List<Widget>? actions,
+    // ignore: deprecated_member_use
     WillPopCallback? onWillPop,
     GlobalKey<NavigatorState>? navigatorKey,
   }) {

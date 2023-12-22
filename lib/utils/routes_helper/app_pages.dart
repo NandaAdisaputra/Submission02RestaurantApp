@@ -10,7 +10,6 @@ import 'package:submission02/ui/home/home_screen.dart';
 import 'package:submission02/ui/list/list_restaurant_screen.dart';
 import 'package:submission02/ui/navbar/navbar_screen.dart';
 import 'package:submission02/ui/review/add_field_review_screen.dart';
-import 'package:submission02/ui/review/add_review_screen.dart';
 import 'package:submission02/ui/search/search_screen.dart';
 import 'package:submission02/ui/splash/splash_screen.dart';
 import 'package:submission02/utils/routes_helper/routes.dart';

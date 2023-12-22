@@ -57,6 +57,7 @@ class _LoadingOverlayState extends State<LoadingOverlay>
 
   @override
   Widget build(BuildContext context) {
+    // ignore: deprecated_member_use
     return WillPopScope(
       onWillPop: () async => false,
       child: Center(

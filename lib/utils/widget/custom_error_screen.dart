@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:submission02/utils/resource_helper/assets.dart';
 
 class CustomErrorScreen extends StatelessWidget {
   const CustomErrorScreen({
@@ -19,7 +18,6 @@ class CustomErrorScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image.asset(ImageAssets.imageLeading),
             const SizedBox(height: 50),
             Text(
               kDebugMode

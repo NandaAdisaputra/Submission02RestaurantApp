@@ -4,9 +4,11 @@ import 'package:get/get.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:submission02/data/base/endpoints.dart' as Endpoints;
+import 'package:submission02/ui/review/review_controller.dart';
 import 'package:submission02/utils/error_helper/error_handler.dart';
 
 class DetailRestaurantController extends GetxController {
+  final reviewController = Get.find<ReviewController>();
   var listBodyRestaurants;
   var listBodyRestaurantsMenusFoods = [];
   var listBodyRestaurantsMenusDrinks = [];

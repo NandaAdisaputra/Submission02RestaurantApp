@@ -3,16 +3,15 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:submission02/data/const/constants.dart';
 import 'package:submission02/ui/detail/detail_controller.dart';
+import 'package:submission02/ui/list/future_builder_list_screen.dart';
 import 'package:submission02/ui/review/add_field_review_screen.dart';
-import 'package:submission02/utils/resource_helper/assets.dart';
 import 'package:submission02/utils/resource_helper/colors.dart';
 import 'package:submission02/utils/resource_helper/fonts.dart';
 import 'package:submission02/utils/resource_helper/sizes.dart';
-import 'package:submission02/utils/routes_helper/routes.dart';
 import 'package:submission02/utils/widget/custom_button.dart';
 
 class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
-  const DetailRestaurantScreen({
+  DetailRestaurantScreen({
     Key? key,
     required this.restaurantID,
     required this.restaurantPICTUREID,
@@ -23,7 +22,7 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
     required this.restaurantFood,
     required this.restaurantDrink,
   }) : super(key: key);
-
+  final reviewController = detailController.reviewController ;
   final String? restaurantID;
   final String? restaurantPICTUREID;
   final String? restaurantNAME;
@@ -131,20 +130,25 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                     AppSizes.hSizeBox15,
                     CustomElevatedBtn(
                         height: 29.5,
-                        backgroundColor: Theme.of(context).brightness ==
-                            Brightness.dark
-                            ? CustomColors.Scarlet
-                            : CustomColors.RoyalBlueDark,
+                        backgroundColor:
+                            Theme.of(context).brightness == Brightness.dark
+                                ? CustomColors.Scarlet
+                                : CustomColors.RoyalBlueDark,
                         radius: 4.5,
                         onPressed: () {
-                          Get.to(AddReviewFormScreen(restaurantID: restaurantID),
+                          Get.to(
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) => AddReviewFormScreen(
+                                      restaurantID: restaurantID)),
+                            ),
                           );
                         },
                         child: Text(
                           Constants.addReviewRestaurant,
                           style: TextStyle(
                               color: Theme.of(context).brightness ==
-                                  Brightness.dark
+                                      Brightness.dark
                                   ? CustomColors.GreenRyb
                                   : CustomColors.White),
                         )),
@@ -312,8 +316,8 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
             boxShadow: [
               BoxShadow(
                 color: Colors.blue,
-                spreadRadius:3,
-                blurRadius:50,
+                spreadRadius: 3,
+                blurRadius: 50,
                 offset: const Offset(
                   5.0,
                   5.0,
