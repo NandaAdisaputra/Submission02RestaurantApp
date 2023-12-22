@@ -40,7 +40,10 @@ class ReviewController extends GetxController {
     try {
       final newReview = await apiServices.createReview(
           id: id, name: name, review: review, date: date);
-      reviews.add(newReview as Review);
+      for (var review in newReview) {
+        reviews.add(review);
+        print('newReview:$review');
+      }
       await CustomProgressIndicator.closeLoadingOverlay();
       isDataLoading(false);
       Get.snackbar(
@@ -54,10 +57,10 @@ class ReviewController extends GetxController {
       print('Error creating review Restaurant: $e');
     }
   }
+
   void isIntroButtonDisabled() {
     if (readTerms.value && readPrivacy.value) {
       enableIntroButton.value = true;
-      debugPrint('Button is now enabled');
     }
   }
 }

@@ -30,27 +30,23 @@ class ApiServices {
       throw Exception(ErrorHandler.handle(dynamic));
     }
   }
-
   Future<List<Review>> createReview(
-      {String? id,
-        String? name,
-        String? review,
-        String? date}) async {
+      {String? id, String? name, String? review, String? date}) async {
     try {
       final response = await dio.post("/review",
-          data: {'id': id, 'name': name, 'review': review, "date": date});
+          data: {'id': id, 'name': name, 'review': review});
 
       if (response.statusCode == 201) {
-        final reviewData =
-        response.data?['customerReviews']; List<dynamic>;
+        print(response.data.toString());
+        final reviewData = response.data?['customerReviews'];
         final reviews = <Review>[];
         for (var review in reviewData) {
           reviews.add(
             Review(
-              id: review['id'],
-              name: review['name'],
-              review: review['review'],
-              date: review['date'],
+              id: id.toString(),
+              name: name.toString(),
+              review: review.toString(),
+              date: date.toString(),
             ),
           );
         }
