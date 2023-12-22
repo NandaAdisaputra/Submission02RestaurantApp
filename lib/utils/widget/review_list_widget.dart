@@ -7,9 +7,8 @@ import 'package:submission02/utils/resource_helper/colors.dart';
 import 'package:submission02/utils/resource_helper/fonts.dart';
 import 'package:submission02/utils/resource_helper/sizes.dart';
 
-// ignore: must_be_immutable
+ReviewController reviewController = Get.put(ReviewController());
 class ReviewListWidget extends StatelessWidget {
-  ReviewController reviewController = Get.put(ReviewController());
 
   ReviewListWidget({super.key});
 

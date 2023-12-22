@@ -5,7 +5,7 @@ class NavBarBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut<NavBarController>(
-          () => NavBarController(),
+          () => NavBarController(),fenix: true
     );
   }
 }

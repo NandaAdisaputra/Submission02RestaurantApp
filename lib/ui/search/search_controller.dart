@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:submission02/data/const/constants.dart';
 import 'package:submission02/utils/error_helper/error_handler.dart';
 import 'package:submission02/data/base/endpoints.dart' as Endpoints;
+import 'package:submission02/utils/widget/custom_progress_indicator.dart';
 
 class SearchRestaurantController extends GetxController {
   final queryRestaurantsSearch = TextEditingController();
@@ -14,6 +15,8 @@ class SearchRestaurantController extends GetxController {
   var isDataLoading = false.obs;
 
   Future<dynamic> getListRestaurant() async {
+    isDataLoading(true);
+    CustomProgressIndicator.openLoadingDialog();
     WidgetsFlutterBinding.ensureInitialized();
     String urlSearch = Endpoints.getSearch.search + "?q=$queryInp";
     final response = await http
@@ -22,16 +25,16 @@ class SearchRestaurantController extends GetxController {
     var responseJson = json.decode(response.body)[Constants.restaurants];
     listBodyRestaurants = responseJson;
     try {
-      isDataLoading(true);
       if (response.statusCode == 200) {
         return listBodyRestaurants;
       } else {
         throw Exception(ErrorHandler.handle(dynamic));
       }
     } on Error {
+      await CustomProgressIndicator.closeLoadingOverlay();
+      isDataLoading(false);
       rethrow;
     } finally {
-      isDataLoading(false);
     }
   }
 }

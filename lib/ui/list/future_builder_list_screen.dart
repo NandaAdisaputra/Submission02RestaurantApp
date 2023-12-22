@@ -1,5 +1,4 @@
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:submission02/data/const/constants.dart';
 import 'package:submission02/ui/detail/detail_controller.dart';
 import 'package:submission02/ui/detail/detail_screen.dart';
@@ -8,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:submission02/utils/resource_helper/fonts.dart';
 import 'package:submission02/utils/resource_helper/sizes.dart';
-
 import '../../utils/resource_helper/colors.dart';
 
 var listRestaurants = Get.put(ListRestaurantController());
@@ -28,7 +26,6 @@ class FutureBuilderRestaurant extends GetView<ListRestaurantController> {
             itemCount: listRestaurants.listBodyRestaurants.length,
             itemBuilder: (context, index) {
               var data = listRestaurants.listBodyRestaurants[index];
-              print("Datanya: $data");
               var listFoods =
                   detailController.listBodyRestaurantsMenusFoods.map((e) {
                 return e;
@@ -41,9 +38,7 @@ class FutureBuilderRestaurant extends GetView<ListRestaurantController> {
                   return e;
                 },
               ).toList();
-              print("list Food: $listFoods");
               listRestaurants.drinks = listDrinks;
-              print("list Drink: $listDrinks");
               if (snapshot.hasData) {
                 return InkWell(
                   onTap: () {

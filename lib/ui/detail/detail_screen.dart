@@ -8,6 +8,8 @@ import 'package:submission02/utils/resource_helper/assets.dart';
 import 'package:submission02/utils/resource_helper/colors.dart';
 import 'package:submission02/utils/resource_helper/fonts.dart';
 import 'package:submission02/utils/resource_helper/sizes.dart';
+import 'package:submission02/utils/routes_helper/routes.dart';
+import 'package:submission02/utils/widget/custom_button.dart';
 
 class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
   const DetailRestaurantScreen({
@@ -47,9 +49,8 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                     Text(
                       '$restaurantNAME',
                       style: TextStyle(
-                          color: Theme.of(context).brightness ==
-                          Brightness.dark
-                          ? CustomColors.Pear
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? CustomColors.Pear
                               : CustomColors.DarkOrange,
                           fontSize: displayWidth(context) * FontSize.s008,
                           fontWeight: FontWeight.bold,
@@ -66,10 +67,9 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                               Center(
                                 child: Icon(
                                   Icons.location_on_outlined,
-                                  color:
-                          Theme.of(context).brightness ==
-                          Brightness.dark
-                          ? CustomColors.DarkOrange
+                                  color: Theme.of(context).brightness ==
+                                          Brightness.dark
+                                      ? CustomColors.DarkOrange
                                       : CustomColors.GreenRyb,
                                 ),
                               ),
@@ -79,10 +79,10 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                                   '$restaurantCITY',
                                   style: TextStyle(
                                     fontSize:
-                                    displayWidth(context) * FontSize.s005,
+                                        displayWidth(context) * FontSize.s005,
                                     color: Theme.of(context).brightness ==
-                                      Brightness.dark
-                                      ?CustomColors.DarkOrange
+                                            Brightness.dark
+                                        ? CustomColors.DarkOrange
                                         : CustomColors.GreenRyb,
                                   ),
                                 ),
@@ -93,17 +93,18 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                               height: 30,
                               child: VerticalDivider(
                                   color: Theme.of(context).brightness ==
-                                  Brightness.dark
-                                  ?CustomColors.GreenRyb
+                                          Brightness.dark
+                                      ? CustomColors.GreenRyb
                                       : Colors.orange)),
                           Center(
                             child: Text(
                               Constants.ratingDetail,
                               style: TextStyle(
                                   fontSize:
-                                  displayWidth(context) * FontSize.s005,
+                                      displayWidth(context) * FontSize.s005,
                                   color: Theme.of(context).brightness ==
-                                  Brightness.dark ? CustomColors.OrangePeel
+                                          Brightness.dark
+                                      ? CustomColors.OrangePeel
                                       : CustomColors.DarkOrange),
                             ),
                           ),
@@ -119,8 +120,8 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                             itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
                             itemBuilder: (_, __) => Icon(Icons.star,
                                 color: Theme.of(context).brightness ==
-                                Brightness.dark
-                                ? CustomColors.Gold
+                                        Brightness.dark
+                                    ? CustomColors.Gold
                                     : CustomColors.Gold),
                             onRatingUpdate: (rating) {},
                           ),
@@ -128,10 +129,28 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                       ),
                     ),
                     AppSizes.hSizeBox15,
+                    CustomElevatedBtn(
+                        height: 29.5,
+                        backgroundColor: Theme.of(context).brightness ==
+                            Brightness.dark
+                            ? CustomColors.Scarlet
+                            : CustomColors.RoyalBlueDark,
+                        radius: 4.5,
+                        onPressed: () {
+                          Get.to(AddReviewFormScreen(restaurantID: restaurantID),
+                          );
+                        },
+                        child: Text(
+                          Constants.addReviewRestaurant,
+                          style: TextStyle(
+                              color: Theme.of(context).brightness ==
+                                  Brightness.dark
+                                  ? CustomColors.GreenRyb
+                                  : CustomColors.White),
+                        )),
                     Divider(
-                      color: Theme.of(context).brightness ==
-                        Brightness.dark
-                        ? CustomColors.UsafaBlue
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? CustomColors.UsafaBlue
                           : CustomColors.SpanishViridian,
                       thickness: 5,
                     ),
@@ -146,8 +165,8 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                               color: Theme.of(context).brightness ==
-                              Brightness.dark
-                              ? CustomColors.White
+                                      Brightness.dark
+                                  ? CustomColors.White
                                   : CustomColors.Black,
                               fontSize: displayWidth(context) * FontSize.s005,
                               fontWeight: FontWeight.normal),
@@ -160,19 +179,19 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                             height: 30,
                             child: VerticalDivider(
                                 color: Theme.of(context).brightness ==
-                                Brightness.dark
-                                ? CustomColors.DarkOrange
+                                        Brightness.dark
+                                    ? CustomColors.DarkOrange
                                     : CustomColors.Scarlet)),
                         Container(
                             margin: EdgeInsets.fromLTRB(16, 8, 8, 8),
                             child: Text(Constants.menuFoods,
                                 style: TextStyle(
                                     color: Theme.of(context).brightness ==
-                                    Brightness.dark
-                                    ? CustomColors.DarkOrange
+                                            Brightness.dark
+                                        ? CustomColors.DarkOrange
                                         : CustomColors.Scarlet,
                                     fontSize:
-                                    displayWidth(context) * FontSize.s005,
+                                        displayWidth(context) * FontSize.s005,
                                     fontFamily: Constants.helvetica))),
                       ],
                     ),
@@ -180,7 +199,7 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                       height: 80, // Card height
                       child: PageView.builder(
                         itemCount:
-                        restaurantFood.isEmpty ? 0 : restaurantFood.length,
+                            restaurantFood.isEmpty ? 0 : restaurantFood.length,
                         controller: PageController(viewportFraction: 0.8),
                         onPageChanged: (index) => restaurantFood.length,
                         itemBuilder: (context, index) {
@@ -196,8 +215,8 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                                   foodName,
                                   style: TextStyle(
                                       color: Theme.of(context).brightness ==
-                                      Brightness.dark
-                                      ? CustomColors.AppleGreen
+                                              Brightness.dark
+                                          ? CustomColors.AppleGreen
                                           : CustomColors.DarkOrange,
                                       fontSize: displayWidth(context) *
                                           FontSize.s0045,
@@ -214,20 +233,20 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                         Container(
                             height: 30,
                             child: VerticalDivider(
-                                color:Theme.of(context).brightness ==
-                                Brightness.dark
-                                ? CustomColors.DarkOrange
+                                color: Theme.of(context).brightness ==
+                                        Brightness.dark
+                                    ? CustomColors.DarkOrange
                                     : CustomColors.Scarlet)),
                         Container(
                             margin: EdgeInsets.fromLTRB(16, 8, 8, 8),
                             child: Text(Constants.menuDrinks,
                                 style: TextStyle(
                                     color: Theme.of(context).brightness ==
-                                    Brightness.dark
-                                     ? CustomColors.DarkOrange
+                                            Brightness.dark
+                                        ? CustomColors.DarkOrange
                                         : CustomColors.Scarlet,
                                     fontSize:
-                                    displayWidth(context) * FontSize.s005,
+                                        displayWidth(context) * FontSize.s005,
                                     fontFamily: Constants.helvetica))),
                       ],
                     ),
@@ -253,10 +272,9 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                                   child: Text(
                                     drinkName,
                                     style: TextStyle(
-                                        color:
-                                        Theme.of(context).brightness ==
-                                        Brightness.dark
-                                        ?CustomColors.AppleGreen
+                                        color: Theme.of(context).brightness ==
+                                                Brightness.dark
+                                            ? CustomColors.AppleGreen
                                             : CustomColors.DarkOrange,
                                         fontSize: displayWidth(context) *
                                             FontSize.s0045,
@@ -268,28 +286,10 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                           },
                         ),
                       ),
-                    ),
+                    )
                   ]),
             ),
           ]),
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Theme.of(context).brightness ==
-          Brightness.dark
-          ?CustomColors.UsafaBlue
-            : CustomColors.SpanishViridian,
-        onPressed: () {
-          Get.to(AddReviewFormScreen(restaurantID: restaurantID,));
-          debugPrint('review');
-        },
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            IconAssets.addIcon,
-            AppSizes.wSizeBox8,
-            Text(Constants.addReview, style: TextStyle(color: Colors.white)),
-          ],
         ),
       ),
     );
@@ -301,7 +301,7 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
       children: [
         ClipRRect(
           borderRadius:
-          const BorderRadius.vertical(bottom: Radius.circular(15)),
+              const BorderRadius.vertical(bottom: Radius.circular(15)),
           child: Image.network(
             'https://restaurant-api.dicoding.dev/images/medium/$restaurantPICTUREID',
             fit: BoxFit.cover,
@@ -311,10 +311,13 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
           decoration: const BoxDecoration(
             boxShadow: [
               BoxShadow(
-                color:CustomColors.SpanishViridian,
-                spreadRadius: 5,
-                blurRadius: 15,
-                offset: Offset(0, 3), // changes position of shadow
+                color: Colors.blue,
+                spreadRadius:3,
+                blurRadius:50,
+                offset: const Offset(
+                  5.0,
+                  5.0,
+                ), // changes position of shadow
               ),
             ],
           ),

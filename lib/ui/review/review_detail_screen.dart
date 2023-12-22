@@ -4,6 +4,7 @@ import 'package:submission02/utils/resource_helper/fonts.dart';
 import '../../utils/resource_helper/sizes.dart';
 import '../../utils/resource_helper/strings.dart';
 
+
 class ReviewDetailsScreen extends StatelessWidget {
   final Review review;
 

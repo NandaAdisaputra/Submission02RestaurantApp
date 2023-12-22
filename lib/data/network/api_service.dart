@@ -42,7 +42,7 @@ class ApiServices {
 
       if (response.statusCode == 201) {
         final reviewData =
-        response.data!['customerReviews']; List<dynamic>;
+        response.data?['customerReviews']; List<dynamic>;
         final reviews = <Review>[];
         for (var review in reviewData) {
           reviews.add(

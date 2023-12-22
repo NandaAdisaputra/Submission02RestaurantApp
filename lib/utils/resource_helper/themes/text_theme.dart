@@ -25,67 +25,67 @@ class CustomTextTheme {
     const FontWeight _regular = FontWeight.w400;
 
     return TextTheme(
-      headline1: GoogleFonts.ubuntu(
+      displayLarge: GoogleFonts.ubuntu(
         fontSize: 96,
         color: textColor,
         fontWeight: _light,
         letterSpacing: -1.5,
       ),
-      headline2: GoogleFonts.ubuntu(
+      displayMedium: GoogleFonts.ubuntu(
         color: textColor,
         fontSize: 60,
         fontWeight: _light,
         letterSpacing: -0.5,
       ),
-      headline3: GoogleFonts.ubuntu(
+      displaySmall: GoogleFonts.ubuntu(
         color: textColor,
         fontSize: 48,
         fontWeight: _regular,
         letterSpacing: 0.0,
       ),
-      headline4: GoogleFonts.ubuntu(
+      headlineMedium: GoogleFonts.ubuntu(
         color: textColor,
         fontSize: 34,
         fontWeight: _regular,
         letterSpacing: 0.25,
       ),
-      headline5: GoogleFonts.ubuntu(
+      headlineSmall: GoogleFonts.ubuntu(
         color: textColor,
         fontSize: 24,
         fontWeight: _regular,
         letterSpacing: 0.0,
       ),
-      headline6: GoogleFonts.ubuntu(
+      titleLarge: GoogleFonts.ubuntu(
         color: textColor,
         fontSize: 20,
         fontWeight: _medium,
         letterSpacing: 0.15,
       ),
-      bodyText1: GoogleFonts.ubuntu(
+      bodyLarge: GoogleFonts.ubuntu(
         color: textColor,
         fontSize: 16,
         fontWeight: _regular,
         letterSpacing: 0.5,
       ),
-      bodyText2: GoogleFonts.ubuntu(
+      bodyMedium: GoogleFonts.ubuntu(
         color: textColor,
         fontSize: 14,
         fontWeight: _regular,
         letterSpacing: 0.25,
       ),
-      button: GoogleFonts.ubuntu(
+      labelLarge: GoogleFonts.ubuntu(
         color: textColor,
         fontSize: 14,
         fontWeight: _medium,
         letterSpacing: 1.25,
       ),
-      caption: GoogleFonts.ubuntu(
+      bodySmall: GoogleFonts.ubuntu(
         color: textColor,
         fontSize: 12,
         fontWeight: _regular,
         letterSpacing: 0.4,
       ),
-      overline: GoogleFonts.ubuntu(
+      labelSmall: GoogleFonts.ubuntu(
         color: textColor,
         fontSize: 10,
         fontWeight: _regular,

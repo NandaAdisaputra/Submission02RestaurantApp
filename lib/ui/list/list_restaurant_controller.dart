@@ -6,6 +6,8 @@ import 'package:submission02/data/base/endpoints.dart' as Endpoints;
 import 'package:submission02/data/const/constants.dart';
 import 'package:submission02/utils/error_helper/error_handler.dart';
 
+import '../../utils/widget/custom_progress_indicator.dart';
+
 class ListRestaurantController extends GetxController {
   var listBodyRestaurants = [];
   var foods;
@@ -15,6 +17,7 @@ class ListRestaurantController extends GetxController {
 
   Future<dynamic> getListRestaurant() async {
     isDataLoading(true);
+    CustomProgressIndicator.openLoadingDialog();
     WidgetsFlutterBinding.ensureInitialized();
     final response =
         await http.get(Uri.parse(Endpoints.getListRestaurant.list));
@@ -27,9 +30,10 @@ class ListRestaurantController extends GetxController {
         throw Exception(ErrorHandler.handle(dynamic));
       }
     } catch (e) {
+      await CustomProgressIndicator.closeLoadingOverlay();
+      isDataLoading(false);
       rethrow;
     } finally {
-      isDataLoading(false);
     }
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:submission02/data/const/constants.dart';
 import 'package:submission02/ui/home/home_screen.dart';
 import 'package:submission02/ui/navbar/navbar_controller.dart';
 import 'package:submission02/ui/profile/profile_user.dart';
@@ -34,9 +35,9 @@ class _NavBarScreenState extends State<NavBarScreen> {
           currentIndex: controller.tabIndex,
           onTap: controller.changeTabIndex,
           items: [
-            _bottomBarItem(Icons.home, "Home"),
-            _bottomBarItem(Icons.search, "Search"),
-            _bottomBarItem(Icons.person, "Profile")
+            _bottomBarItem(Icons.home, Constants.home),
+            _bottomBarItem(Icons.search, Constants.search),
+            _bottomBarItem(Icons.person, Constants.profileUsers)
           ],
         ),
       );

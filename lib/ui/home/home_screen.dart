@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:submission02/data/base/binding/initial_binding.dart';
 import 'package:submission02/data/const/constants.dart';
 import 'package:submission02/ui/home/home_controller.dart';
 import 'package:submission02/ui/list/list_restaurant_screen.dart';

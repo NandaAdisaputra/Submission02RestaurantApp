@@ -7,12 +7,10 @@ class HomeController extends GetxController
   final ThemeController _themeController = Get.find<ThemeController>();
   final count = 0.obs;
   Rx<String> currentModeName = ''.obs;
-
   RxBool isDarkMode = false.obs;
   late Color textColor;
   double fontSize = 20;
   late AnimationController animationController;
-
   @override
   void onInit() {
     isDarkMode.value = _themeController.isDarkTheme;

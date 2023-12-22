@@ -5,7 +5,7 @@ class ProfileUsersBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut<ProfileUserController>(
-      () => ProfileUserController(),
+      () => ProfileUserController(),fenix: true
     );
   }
 }

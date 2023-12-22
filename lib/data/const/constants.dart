@@ -23,6 +23,7 @@ class Constants {
       "Temukan Restoran yang Anda Sukai";
   static const String searchTitle = "Search";
   static const String addReview = "Review";
+  static const String addReviewRestaurant = "Add Review";
   static const String addFavorite = "Favorit";
   static const String profileUsers = "Profile";
   static const String visitLinkedin = "Visit My linkedin";
