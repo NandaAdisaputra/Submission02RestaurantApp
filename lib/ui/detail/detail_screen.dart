@@ -11,6 +11,7 @@ import 'package:submission02/utils/resource_helper/fonts.dart';
 import 'package:submission02/utils/resource_helper/sizes.dart';
 import 'package:submission02/utils/widget/custom_button.dart';
 
+// ignore: must_be_immutable
 class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
   DetailRestaurantScreen({
     Key? key,
@@ -190,53 +191,71 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                             child: VerticalDivider(
                                 color: Theme.of(context).brightness ==
                                         Brightness.dark
-                                    ? CustomColors.DarkOrange
+                                    ? CustomColors.SpanishViridian
                                     : CustomColors.Scarlet)),
                         Container(
-                            margin: EdgeInsets.fromLTRB(16, 8, 8, 8),
                             child: Text(Constants.menuFoods,
                                 style: TextStyle(
                                     color: Theme.of(context).brightness ==
                                             Brightness.dark
-                                        ? CustomColors.DarkOrange
+                                        ? CustomColors.SpanishViridian
                                         : CustomColors.Scarlet,
                                     fontSize:
                                         displayWidth(context) * FontSize.s005,
                                     fontFamily: Constants.helvetica))),
                       ],
                     ),
-                    SizedBox(
-                      height: 80, // Card height
-                      child: PageView.builder(
-                        itemCount:
-                            restaurantFood.isEmpty ? 0 : restaurantFood.length,
-                        controller: PageController(viewportFraction: 0.8),
-                        onPageChanged: (index) => restaurantFood.length,
-                        itemBuilder: (context, index) {
-                          var foodName = restaurantFood[index]['name'];
-                          return AnimatedPadding(
-                            duration: const Duration(milliseconds: 400),
-                            curve: Curves.fastOutSlowIn,
-                            padding: EdgeInsets.all(8),
-                            child: Card(
-                              elevation: 4,
-                              child: Center(
-                                child: Text(
-                                  foodName,
-                                  style: TextStyle(
-                                      color: Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? CustomColors.AppleGreen
-                                          : CustomColors.DarkOrange,
-                                      fontSize: displayWidth(context) *
-                                          FontSize.s0045,
-                                      fontWeight: FontWeight.normal),
+                    SingleChildScrollView(
+                      child: Column(children: [
+                        SizedBox(
+                          height: 100 + 12 + 12,
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            physics: PageScrollPhysics(),
+                            scrollDirection: Axis.horizontal,
+                            itemCount: restaurantFood.isEmpty
+                                ? 0
+                                : restaurantFood.length,
+                            itemBuilder: (context, index) => AnimatedPadding(
+                              duration: const Duration(milliseconds: 400),
+                              curve: Curves.fastOutSlowIn,
+                              padding: EdgeInsets.all(8),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8),
+                                child: Card(
+                                  elevation: 8,
+                                  margin: EdgeInsets.all(8),
+                                  shadowColor: CustomColors.OrangePeel,
+                                  color: Theme.of(context).brightness ==
+                                          Brightness.dark
+                                      ? CustomColors.SpanishViridian
+                                      : CustomColors.Scarlet,
+                                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                                  semanticContainer: true,
+                                  surfaceTintColor: CustomColors.RoyalBlueDark,
+                                  child: Center(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(12),
+                                      child: Text(
+                                        restaurantFood[index]['name'],
+                                        style: TextStyle(
+                                            color:
+                                                Theme.of(context).brightness ==
+                                                        Brightness.dark
+                                                    ? CustomColors.White
+                                                    : CustomColors.MiddleYellow,
+                                            fontSize: displayWidth(context) *
+                                                FontSize.s0045,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
-                          );
-                        },
-                      ),
+                          ),
+                        ),
+                      ]),
                     ),
                     Row(
                       children: [
@@ -246,57 +265,71 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                                 color: Theme.of(context).brightness ==
                                         Brightness.dark
                                     ? CustomColors.DarkOrange
-                                    : CustomColors.Scarlet)),
+                                    : CustomColors.RoyalBlueDark)),
                         Container(
-                            margin: EdgeInsets.fromLTRB(16, 8, 8, 8),
                             child: Text(Constants.menuDrinks,
                                 style: TextStyle(
                                     color: Theme.of(context).brightness ==
                                             Brightness.dark
                                         ? CustomColors.DarkOrange
-                                        : CustomColors.Scarlet,
+                                        : CustomColors.RoyalBlueDark,
                                     fontSize:
                                         displayWidth(context) * FontSize.s005,
                                     fontFamily: Constants.helvetica))),
                       ],
                     ),
-                    Container(
-                      margin: EdgeInsets.only(bottom: 24),
-                      child: SizedBox(
-                        height: 80, // Card height
-                        child: PageView.builder(
-                          itemCount: restaurantDrink.isEmpty
-                              ? 0
-                              : restaurantDrink.length,
-                          controller: PageController(viewportFraction: 0.8),
-                          onPageChanged: (index) => restaurantDrink.length,
-                          itemBuilder: (context, index) {
-                            var drinkName = restaurantDrink[index]['name'];
-                            return AnimatedPadding(
+                    SingleChildScrollView(
+                      child: Column(children: [
+                        SizedBox(
+                          height: 100 + 12 + 12,
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            physics: PageScrollPhysics(),
+                            scrollDirection: Axis.horizontal,
+                            itemCount: restaurantDrink.isEmpty
+                                ? 0
+                                : restaurantDrink.length,
+                            itemBuilder: (context, index) => AnimatedPadding(
                               duration: const Duration(milliseconds: 400),
                               curve: Curves.fastOutSlowIn,
                               padding: EdgeInsets.all(8),
-                              child: Card(
-                                elevation: 4,
-                                child: Center(
-                                  child: Text(
-                                    drinkName,
-                                    style: TextStyle(
-                                        color: Theme.of(context).brightness ==
-                                                Brightness.dark
-                                            ? CustomColors.AppleGreen
-                                            : CustomColors.DarkOrange,
-                                        fontSize: displayWidth(context) *
-                                            FontSize.s0045,
-                                        fontWeight: FontWeight.normal),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8),
+                                child: Card(
+                                  elevation: 8,
+                                  color: Theme.of(context).brightness ==
+                                          Brightness.dark
+                                      ? CustomColors.DarkOrange
+                                      : CustomColors.RoyalBlueDark,
+                                  margin: EdgeInsets.all(8),
+                                  shadowColor: CustomColors.OrangePeel,
+                                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                                  semanticContainer: true,
+                                  surfaceTintColor: CustomColors.RoyalBlueDark,
+                                  child: Center(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(12),
+                                      child: Text(
+                                        restaurantDrink[index]['name'],
+                                        style: TextStyle(
+                                            color:
+                                                Theme.of(context).brightness ==
+                                                        Brightness.dark
+                                                    ? CustomColors.White
+                                                    : CustomColors.MiddleYellow,
+                                            fontSize: displayWidth(context) *
+                                                FontSize.s0045,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
-                            );
-                          },
+                            ),
+                          ),
                         ),
-                      ),
-                    )
+                      ]),
+                    ),
                   ]),
             ),
           ]),
