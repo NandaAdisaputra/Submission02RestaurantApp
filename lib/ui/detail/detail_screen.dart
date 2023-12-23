@@ -6,10 +6,10 @@ import 'package:submission02/data/const/constants.dart';
 import 'package:submission02/ui/detail/detail_controller.dart';
 import 'package:submission02/ui/list/future_builder_list_screen.dart';
 import 'package:submission02/ui/review/add_field_review_screen.dart';
+import 'package:submission02/utils/resource_helper/assets.dart';
 import 'package:submission02/utils/resource_helper/colors.dart';
 import 'package:submission02/utils/resource_helper/fonts.dart';
 import 'package:submission02/utils/resource_helper/sizes.dart';
-import 'package:submission02/utils/widget/custom_button.dart';
 
 // ignore: must_be_immutable
 class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
@@ -135,30 +135,6 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                       ),
                     ),
                     AppSizes.hSizeBox15,
-                    CustomElevatedBtn(
-                        height: 29.5,
-                        backgroundColor:
-                            Theme.of(context).brightness == Brightness.dark
-                                ? CustomColors.Scarlet
-                                : CustomColors.RoyalBlueDark,
-                        radius: 4.5,
-                        onPressed: () {
-                          Get.to(
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                  builder: (context) => AddReviewFormScreen(
-                                      restaurantID: restaurantID)),
-                            ),
-                          );
-                        },
-                        child: Text(
-                          Constants.addReviewRestaurant,
-                          style: TextStyle(
-                              color: Theme.of(context).brightness ==
-                                      Brightness.dark
-                                  ? CustomColors.GreenRyb
-                                  : CustomColors.White),
-                        )),
                     Divider(
                       color: Theme.of(context).brightness == Brightness.dark
                           ? CustomColors.UsafaBlue
@@ -213,9 +189,7 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                             shrinkWrap: true,
                             physics: PageScrollPhysics(),
                             scrollDirection: Axis.horizontal,
-                            itemCount: restaurantFood.isEmpty
-                                ? 0
-                                : restaurantFood.length,
+                            itemCount: restaurantFood.length,
                             itemBuilder: (context, index) => AnimatedPadding(
                               duration: const Duration(milliseconds: 400),
                               curve: Curves.fastOutSlowIn,
@@ -286,9 +260,7 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                             shrinkWrap: true,
                             physics: PageScrollPhysics(),
                             scrollDirection: Axis.horizontal,
-                            itemCount: restaurantDrink.isEmpty
-                                ? 0
-                                : restaurantDrink.length,
+                            itemCount: restaurantDrink.length,
                             itemBuilder: (context, index) => AnimatedPadding(
                               duration: const Duration(milliseconds: 400),
                               curve: Curves.fastOutSlowIn,
@@ -333,6 +305,29 @@ class DetailRestaurantScreen extends GetView<DetailRestaurantController> {
                   ]),
             ),
           ]),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
+      floatingActionButton: Container(
+        margin: EdgeInsets.only(top: 30),
+        child: FloatingActionButton.extended(
+          icon: IconAssets.addIcon,
+          label: Text(Constants.addReviewRestaurant,
+              style: TextStyle(color: Colors.white)),
+          hoverColor: CustomColors.Scarlet,
+          tooltip: Constants.addReview,
+          backgroundColor: Get.isDarkMode
+              ? CustomColors.UsafaBlue
+              : CustomColors.SpanishViridian,
+          onPressed: () {
+            Get.to(
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                    builder: (context) =>
+                        AddReviewFormScreen(restaurantID: restaurantID)),
+              ),
+            );
+          },
         ),
       ),
     );

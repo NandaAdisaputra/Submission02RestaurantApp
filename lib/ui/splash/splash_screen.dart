@@ -17,7 +17,7 @@ class SplashScreen extends GetView<SplashController> {
           ? CustomColors.Jet
           : CustomColors.DarkOrange,
       body: Center(
-        child: Lottie.asset(JsonAssets.splash),
+        child: Lottie.asset(JsonAssets.splash, width: 250, height: 250),
       ),
     );
   }

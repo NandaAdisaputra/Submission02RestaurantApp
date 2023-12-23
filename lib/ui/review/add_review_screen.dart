@@ -5,12 +5,14 @@ import '../../utils/resource_helper/sizes.dart';
 import '../../utils/resource_helper/strings.dart';
 
 var reviewRestaurantController = Get.put(ReviewController());
+
 // ignore: must_be_immutableZ, must_be_immutable
 class AddReviewScreen extends StatelessWidget {
   TextEditingController nameController = TextEditingController();
   TextEditingController reviewController = TextEditingController();
   TextEditingController dateController = TextEditingController();
   final String? restaurantID;
+
   AddReviewScreen({super.key, this.restaurantID});
 
   void _createNewReview() {

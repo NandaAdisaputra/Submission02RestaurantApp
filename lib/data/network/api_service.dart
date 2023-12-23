@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:submission02/data/base/base_url.dart';
-import 'package:submission02/data/model/review.dart';
+import 'package:submission02/data/model/add_review_model.dart';
 import 'package:submission02/utils/error_helper/error_handler.dart';
 
 class ApiServices {
@@ -10,26 +10,6 @@ class ApiServices {
     dio = Dio(BaseOptions(baseUrl: base));
   }
 
-  Future<List<Review>> fetchReview(String endPoint) async {
-    try {
-      final response = await dio.get(endPoint);
-      if (response.statusCode == 200) {
-        final data = response.data as List<dynamic>;
-        List<Review> reviews = data.map((reviewsData) {
-          return Review(
-              id: reviewsData['id'],
-              name: reviewsData['name'],
-              review: reviewsData['review'],
-              date: reviewsData['date']);
-        }).toList();
-        return reviews;
-      } else {
-        throw Exception(ErrorHandler.handle(dynamic));
-      }
-    } catch (e) {
-      throw Exception(ErrorHandler.handle(dynamic));
-    }
-  }
   Future<List<Review>> createReview(
       {String? id, String? name, String? review, String? date}) async {
     try {

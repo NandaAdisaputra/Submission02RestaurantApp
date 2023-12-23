@@ -26,7 +26,6 @@ class DetailRestaurantController extends GetxController {
         responseJson['restaurant']['menus']['foods'];
     listBodyRestaurantsMenusDrinks =
         responseJson['restaurant']['menus']['drinks'];
-
     try {
       if (response.statusCode == 200) {
         return listBodyRestaurants;

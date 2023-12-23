@@ -7,7 +7,6 @@ import 'package:submission02/utils/resource_helper/sizes.dart';
 import 'package:submission02/utils/resource_helper/strings.dart';
 import 'text_field_controller.dart';
 
-
 class AddReviewFormScreen extends StatelessWidget {
   final ReviewController reviewController = Get.find();
   final TextFieldController textFieldController =
