@@ -3,6 +3,9 @@ class Constants {
   static const String title = "Restaurant";
   static const String subTitle = "Recommendation restaurant for you!";
   static const String search = "Cari Restaurant";
+  static const String success= "Sukses";
+  static const String successNewReviewCreate= "New Review Restaurant created:";
+  static const String errorNewReviewCreate= "Error creating review Restaurant:";
   static const String setting = "Setting";
   static const String name = "name";
   static const String rating = "rating";
